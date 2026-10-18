@@ -188,14 +188,15 @@
       flex-shrink: 0;
     }
 
+    /* Fixed spacing: normal whitespace instead of pre-wrap to eliminate empty vertical gaps */
     .bubble {
       padding: 14px 18px;
       font-size: 14px;
-      line-height: 1.6;
+      line-height: 1.5;
       max-width: 82%;
       border-radius: 12px;
       word-break: break-word;
-      white-space: pre-wrap;
+      white-space: normal;
     }
 
     .bubble.ai {
@@ -211,8 +212,12 @@
       border-top-right-radius: 2px;
     }
 
-    .bubble p { margin-bottom: 8px; }
-    .bubble p:last-child { margin-bottom: 0; }
+    .bubble p {
+      margin-bottom: 6px;
+    }
+    .bubble p:last-child {
+      margin-bottom: 0;
+    }
     .bubble strong { color: #f8fafc; font-weight: 600; }
     .bubble em { color: #93c5fd; }
     .bubble ul { margin-left: 20px; margin-bottom: 8px; }
@@ -327,10 +332,7 @@
   <main id="chatBox">
     <div class="msg-row">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS42Xy7NB3R0Xy0MnT5mvmh2ovidQ7lE-tJKl9RDZ8EEchaE3n66Z5b6w&s=10" alt="Ultraman Hensem" class="avatar-img" />
-      <div class="bubble ai">
-        <p><strong>Yo bro! Ultraman Hensem is here. 😎</strong></p>
-        <p>Ready to help out with any WTS SOPs, bus schedules, or whatever you need. Ask away, or just drop by for a quick chat!</p>
-      </div>
+      <div class="bubble ai"><p><strong>Yo bro! Ultraman Hensem is here. 😎</strong></p><p>Ready to help out with any WTS SOPs, bus schedules, or whatever you need. Ask away, or just drop by for a quick chat!</p></div>
     </div>
   </main>
 
@@ -559,10 +561,7 @@ MASTER KNOWLEDGE BASE:
       box.innerHTML = `
         <div class="msg-row">
           <img src="${AVATAR_URL}" alt="Ultraman Hensem" class="avatar-img" />
-          <div class="bubble ai">
-            <p><strong>Chat reset! Screen is clean now, bro. 🧹✨</strong></p>
-            <p>Ask me any WTS SOP, bus schedules, or let's start fresh!</p>
-          </div>
+          <div class="bubble ai"><p><strong>Chat reset! Screen is clean now, bro. 🧹✨</strong></p><p>Ask me any WTS SOP, bus schedules, or let's start fresh!</p></div>
         </div>
       `;
       document.getElementById('userInput').value = '';
