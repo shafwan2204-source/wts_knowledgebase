@@ -351,6 +351,31 @@
     let GEMINI_API_KEY = window.GEMINI_API_KEY || "";
     const AVATAR_URL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS42Xy7NB3R0Xy0MnT5mvmh2ovidQ7lE-tJKl9RDZ8EEchaE3n66Z5b6w&s=10";
 
+    // 1. Handshake Listener: Receive key from desktop wrapper via postMessage
+    window.addEventListener('message', (event) => {
+      if (event.data && event.data.type === 'SET_KEY' && event.data.apiKey) {
+        GEMINI_API_KEY = event.data.apiKey;
+        window.GEMINI_API_KEY = event.data.apiKey;
+        checkReadyState();
+      }
+    });
+
+    // 2. Proactively request key if loaded inside iframe
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({ type: 'REQUEST_KEY' }, '*');
+    }
+
+    // 3. Fallback polling for desktop-injected global key
+    const keyCheckInterval = setInterval(() => {
+      if (!GEMINI_API_KEY && window.GEMINI_API_KEY) {
+        GEMINI_API_KEY = window.GEMINI_API_KEY;
+        checkReadyState();
+        clearInterval(keyCheckInterval);
+      } else if (GEMINI_API_KEY) {
+        clearInterval(keyCheckInterval);
+      }
+    }, 200);
+
     const PERSONA_HEADER = `SYSTEM INSTRUCTION: DUAL-MODE PERSONA (WORK KNOWLEDGE VS CASUAL BUDDY)
 
 IDENTITY:
@@ -409,11 +434,19 @@ MASTER KNOWLEDGE BASE:
         input.disabled = false;
         btn.disabled = false;
         input.placeholder = "Ask Ultraman Hensem anything or chat casually...";
+      } else if (!kbLoaded) {
+        input.disabled = true;
+        btn.disabled = true;
+        input.placeholder = "Connecting knowledge base from GitHub...";
+      } else if (!GEMINI_API_KEY) {
+        input.disabled = true;
+        btn.disabled = true;
+        input.placeholder = "Waiting for desktop API handshake...";
       }
     }
 
     async function syncKnowledgeBase() {
-      // 1. Check if desktop passed a preloaded knowledge base
+      // 1. Immediately read if desktop wrapper provided preloaded KB
       if (window.PRELOADED_KB && window.PRELOADED_KB.length > 50) {
         dynamicSystemPrompt = PERSONA_HEADER + window.PRELOADED_KB;
         kbLoaded = true;
@@ -421,7 +454,7 @@ MASTER KNOWLEDGE BASE:
         checkReadyState();
       }
 
-      // 2. Refresh silently in background
+      // 2. Fetch fresh updates from raw GitHub in background
       try {
         const uniqueTimestamp = Date.now() + "_" + Math.floor(Math.random() * 10000);
         const res = await fetch(`${RAW_KB_URL}?t=${uniqueTimestamp}`, { cache: "no-store" });
@@ -435,7 +468,7 @@ MASTER KNOWLEDGE BASE:
           }
         }
       } catch (e) {
-        // Retain existing KB
+        // Continue with current dynamicSystemPrompt
       }
 
       if (syncTimer) clearTimeout(syncTimer);
