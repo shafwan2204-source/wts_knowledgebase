@@ -36,7 +36,7 @@
     header {
       background: var(--bg-panel);
       border-bottom: 1px solid var(--border-subtle);
-      padding: 14px 24px;
+      padding: 12px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -128,15 +128,13 @@
       font-size: 11px;
       font-weight: 600;
       cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
+      transition: all 0.2s ease;
     }
 
     .reset-btn:hover {
       background: rgba(244, 63, 94, 0.15);
       color: #fda4af;
-      border-color: rgba(244, 63, 94, 0.4);
+      border-color: rgba(244, 63, 94, 0.3);
     }
 
     #chatBox {
@@ -197,6 +195,7 @@
       max-width: 82%;
       border-radius: 12px;
       word-break: break-word;
+      white-space: pre-wrap;
     }
 
     .bubble.ai {
@@ -210,14 +209,13 @@
       background: var(--accent-blue);
       color: #ffffff;
       border-top-right-radius: 2px;
-      white-space: pre-wrap;
     }
 
     .bubble p { margin-bottom: 8px; }
     .bubble p:last-child { margin-bottom: 0; }
     .bubble strong { color: #f8fafc; font-weight: 600; }
     .bubble em { color: #93c5fd; }
-    .bubble ul { margin-left: 20px; margin-bottom: 8px; list-style-type: disc; }
+    .bubble ul { margin-left: 20px; margin-bottom: 8px; }
     .bubble li { margin-bottom: 4px; }
     .bubble blockquote {
       border-left: 3px solid var(--accent-blue);
@@ -311,8 +309,8 @@
       </div>
     </div>
     <div class="header-badges">
-      <div class="status-badge neutral" id="lastSyncBadge" title="Last background knowledge base refresh">
-        <span>🕒 Synced: --:--:--</span>
+      <div class="status-badge neutral" id="lastSyncBadge">
+        <span>🕒 Synced: Connecting...</span>
       </div>
       <div class="status-badge amber" id="kbBadge">
         <div class="status-dot"></div>
@@ -322,9 +320,7 @@
         <div class="status-dot"></div>
         <span id="badgeText">3.5 Flash-Lite</span>
       </div>
-      <button class="reset-btn" type="button" onclick="resetChat()" title="Clear chat history and reset screen">
-        ↺ Reset Chat
-      </button>
+      <button class="reset-btn" type="button" onclick="resetChat()">↺ Reset Chat</button>
     </div>
   </header>
 
@@ -332,8 +328,8 @@
     <div class="msg-row">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS42Xy7NB3R0Xy0MnT5mvmh2ovidQ7lE-tJKl9RDZ8EEchaE3n66Z5b6w&s=10" alt="Ultraman Hensem" class="avatar-img" />
       <div class="bubble ai">
-        <p><strong>Yo bro! Ultraman Hensem is in the house. 😎</strong></p>
-        <p>Ready to help settle any WTS SOPs, coach fares, bus schedules, or whatever inquiries you have. Ask away or chit chat casually pun boleh!</p>
+        <p><strong>Yo bro! Ultraman Hensem is here. 😎</strong></p>
+        <p>Ready to help out with any WTS SOPs, bus schedules, or whatever you need. Ask away, or just drop by for a quick chat!</p>
       </div>
     </div>
   </main>
@@ -351,30 +347,12 @@
     let GEMINI_API_KEY = window.GEMINI_API_KEY || "";
     const AVATAR_URL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS42Xy7NB3R0Xy0MnT5mvmh2ovidQ7lE-tJKl9RDZ8EEchaE3n66Z5b6w&s=10";
 
-    // 1. Handshake Listener: Receive key from desktop wrapper via postMessage
-    window.addEventListener('message', (event) => {
-      if (event.data && event.data.type === 'SET_KEY' && event.data.apiKey) {
-        GEMINI_API_KEY = event.data.apiKey;
-        window.GEMINI_API_KEY = event.data.apiKey;
-        checkReadyState();
-      }
-    });
+    const PRIMARY_MODEL = "gemini-3.5-flash-lite";
+    const FALLBACK_MODEL = "gemini-3.8-flash";
 
-    // 2. Proactively request key if loaded inside iframe
-    if (window.parent && window.parent !== window) {
-      window.parent.postMessage({ type: 'REQUEST_KEY' }, '*');
+    function getEndpoint(model) {
+      return `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`;
     }
-
-    // 3. Fallback polling for desktop-injected global key
-    const keyCheckInterval = setInterval(() => {
-      if (!GEMINI_API_KEY && window.GEMINI_API_KEY) {
-        GEMINI_API_KEY = window.GEMINI_API_KEY;
-        checkReadyState();
-        clearInterval(keyCheckInterval);
-      } else if (GEMINI_API_KEY) {
-        clearInterval(keyCheckInterval);
-      }
-    }, 200);
 
     const PERSONA_HEADER = `SYSTEM INSTRUCTION: DUAL-MODE PERSONA (WORK KNOWLEDGE VS CASUAL BUDDY)
 
@@ -382,25 +360,31 @@ IDENTITY:
 Your name is Ultraman Hensem. You are the dedicated AI Assistant for WTS Travel Call Centre & Operations.
 
 CORE OBJECTIVE:
-Analyze every user input to determine whether the inquiry is Work-Related (WTS Travel operations, bookings, policies, contacts, escalations) or Non-Work Related (casual chat, personal questions, greetings, banter). Adapt your persona, tone, and formatting accordingly.
+Analyze every user input to determine whether the inquiry is Work-Related (WTS Travel operations, bookings, policies, contacts, escalations) or Non-Work Related (casual chat, personal questions, greetings, banter). Adapt your persona, tone, and information source accordingly.
 
 1. INTENT CLASSIFICATION:
-CONDITION A: WORK-RELATED QUERY
+CONDITION A: WORK-RELATED QUERY (HIGH CONFIDENCE: 80 TO 100 PERCENT)
 - Source of Truth: Answer strictly and accurately using the MASTER KNOWLEDGE BASE below.
 - Tone: Professional, clear, concise, and structured (Call Centre / Customer Support Lead standard).
-- Rules: Never guess or extrapolate policies, contacts, or pricing rules. Follow operational directives strictly.
-- FORMATTING REQUIREMENT: Always use bullet points, bold key terms, and line breaks. DO NOT write single solid walls of text.
+- Rules: Never guess or extrapolate policies, contacts, or pricing rules. Follow operational directives strictly (such as coach pricing stop notice, complaint workflows, TBF collection steps). Use bullet points and clean formatting.
+- MANDATORY AGENT VERIFICATION DIRECTIVE:
+  Agents must never blindly trust AI-generated answers and must always maintain a healthy doubt. If the agent has any significant doubt, suspicion of inaccuracy, or encounters an unlisted scenario, instruct them to stop and clarify with their Team Lead before committing to or confirming with the customer.
+- FOOTER REMINDER: When answering operational work queries, always append this exact warning footer at the very end of your response:
+  "⚠️ *Note to Agent: Always review and doubt AI-generated information. If you have any significant doubt, please clarify directly with your Team Lead before committing to the customer.*"
 
-CONDITION B: NON-WORK RELATED QUERY (Casual Chat, Jokes, Greetings)
+CONDITION B: NON-WORK RELATED QUERY
 - Persona: Close friend / bro / kawan (as Ultraman Hensem).
 - Tone and Style: Casual, warm, witty, and grounded using natural Malaysian English / Manglish / BM slang (particles like lah, meh, bro, kan, jom, steady, ngam, settle, walao naturally).
 
-2. LOW CONFIDENCE OR UNLISTED INFO:
-- If an answer is not in the knowledge base, do not guess. Advise the agent to check with the Team Lead before committing to the customer.
+2. LOW CONFIDENCE OR PARTIAL INFORMATION (AROUND 60 PERCENT SURE):
+- State clearly what is known from the knowledge base without making assumptions.
+- Explicitly flag the uncertainty.
+- Advise the user to verify directly with the Team Lead before committing to customer.
+  Example prompt response: "Based on the records, (state known fact). However, as this specific scenario is not explicitly documented, please escalate or check with your Team Lead before confirming with the customer."
 
-3. MIXED QUERIES (CASUAL + WORK):
-- Acknowledge casually in 1 short line (e.g., "Aduh bro, Ultraman Hensem tolong setelkan! Here are the details:").
-- Transition immediately into the professional, clear bullet-point answer based on the knowledge base.
+3. MIXED QUERIES (CASUAL PLUS WORK):
+- Acknowledge casually in 1 short line (e.g. "Aduh bro, Ultraman Hensem setelkan! Here are the details:").
+- Transition immediately into the professional, accurate work answer based on the knowledge base, ending with the agent verification note.
 
 ================================================================================
 MASTER KNOWLEDGE BASE:
@@ -412,67 +396,161 @@ MASTER KNOWLEDGE BASE:
     let syncTimer = null;
     let chatHistory = [];
 
-    const RAW_KB_URL = "https://raw.githubusercontent.com/shafwan2204-source/wts_knowledgebase/refs/heads/main/knowledge_base.txt";
+    const GITHUB_KB_URL = "https://raw.githubusercontent.com/shafwan2204-source/wts_knowledgebase/refs/heads/main/knowledge_base.txt";
 
-    function updateSyncTimerDisplay() {
-      const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-      const badge = document.getElementById('lastSyncBadge');
-      if (badge) {
-        badge.innerHTML = `<span>🕒 Synced: ${timeStr}</span>`;
+    // 1. Handshake Listener: Receive key from desktop wrapper via postMessage
+    window.addEventListener('message', (event) => {
+      if (event.data && event.data.type === 'SET_KEY' && event.data.apiKey) {
+        GEMINI_API_KEY = event.data.apiKey;
+        window.GEMINI_API_KEY = event.data.apiKey;
+        checkReadyState();
       }
+    });
+
+    // 2. Ask parent frame for key proactively upon launch
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({ type: 'REQUEST_KEY' }, '*');
     }
+
+    // 3. Fallback poll in case window.GEMINI_API_KEY was injected directly
+    const keyCheckInterval = setInterval(() => {
+      if (!GEMINI_API_KEY && window.GEMINI_API_KEY) {
+        GEMINI_API_KEY = window.GEMINI_API_KEY;
+        checkReadyState();
+        clearInterval(keyCheckInterval);
+      } else if (GEMINI_API_KEY) {
+        clearInterval(keyCheckInterval);
+      }
+    }, 200);
 
     function checkReadyState() {
       const input = document.getElementById('userInput');
       const btn = document.getElementById('sendBtn');
-      const kbBadge = document.getElementById('kbBadge');
-      const kbBadgeText = document.getElementById('kbBadgeText');
-
-      if (kbLoaded && GEMINI_API_KEY) {
-        kbBadge.className = "status-badge emerald";
-        kbBadgeText.innerText = "Connected";
+      if (GEMINI_API_KEY && kbLoaded) {
         input.disabled = false;
         btn.disabled = false;
         input.placeholder = "Ask Ultraman Hensem anything or chat casually...";
-      } else if (!kbLoaded) {
-        input.disabled = true;
-        btn.disabled = true;
-        input.placeholder = "Connecting knowledge base from GitHub...";
+        input.focus();
       } else if (!GEMINI_API_KEY) {
         input.disabled = true;
         btn.disabled = true;
         input.placeholder = "Waiting for desktop API handshake...";
+      } else if (!kbLoaded) {
+        input.disabled = true;
+        btn.disabled = true;
+        input.placeholder = "Connecting knowledge base...";
       }
     }
 
+    function updateSyncTimerDisplay() {
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      document.getElementById('lastSyncBadge').innerHTML = `<span>🕒 Synced: ${timeStr}</span>`;
+    }
+
+    async function fetchWithTimeout(url, timeoutMs = 4000) {
+      const controller = new AbortController();
+      const id = setTimeout(() => controller.abort(), timeoutMs);
+      try {
+        const response = await fetch(url, { 
+          signal: controller.signal, 
+          cache: "no-store",
+          headers: {
+            "Pragma": "no-cache",
+            "Cache-Control": "no-cache, no-store, must-revalidate"
+          }
+        });
+        clearTimeout(id);
+        return response;
+      } catch (err) {
+        clearTimeout(id);
+        throw err;
+      }
+    }
+
+    async function tryFetchKB() {
+      const ts = Date.now() + "_" + Math.floor(Math.random() * 1000);
+      const cleanUrl = `${GITHUB_KB_URL}?t=${ts}`;
+      const mirrors = [
+        cleanUrl,
+        `https://api.allorigins.win/raw?url=${encodeURIComponent(cleanUrl)}`,
+        `https://corsproxy.io/?url=${encodeURIComponent(cleanUrl)}`
+      ];
+
+      for (const target of mirrors) {
+        try {
+          const res = await fetchWithTimeout(target, 4000);
+          if (res.ok) {
+            const text = await res.text();
+            if (text && text.trim().length > 100) return text;
+          }
+        } catch (e) {
+          // Fall through to next mirror
+        }
+      }
+      return null;
+    }
+
     async function syncKnowledgeBase() {
-      // 1. Immediately read if desktop wrapper provided preloaded KB
-      if (window.PRELOADED_KB && window.PRELOADED_KB.length > 50) {
+      const kbBadge = document.getElementById('kbBadge');
+      const kbBadgeText = document.getElementById('kbBadgeText');
+
+      if (!kbLoaded) {
+        kbBadge.className = "status-badge amber";
+        kbBadgeText.innerText = "Connecting...";
+      }
+
+      // Check if preloaded by wrapper
+      if (!kbLoaded && window.PRELOADED_KB && window.PRELOADED_KB.trim().length > 100) {
         dynamicSystemPrompt = PERSONA_HEADER + window.PRELOADED_KB;
         kbLoaded = true;
+        kbBadge.className = "status-badge emerald";
+        kbBadgeText.innerText = "Online";
         updateSyncTimerDisplay();
         checkReadyState();
       }
 
-      // 2. Fetch fresh updates from raw GitHub in background
-      try {
-        const uniqueTimestamp = Date.now() + "_" + Math.floor(Math.random() * 10000);
-        const res = await fetch(`${RAW_KB_URL}?t=${uniqueTimestamp}`, { cache: "no-store" });
-        if (res.ok) {
-          const fetchedText = await res.text();
-          if (fetchedText && fetchedText.trim().length > 100) {
-            dynamicSystemPrompt = PERSONA_HEADER + fetchedText;
-            kbLoaded = true;
-            updateSyncTimerDisplay();
-            checkReadyState();
-          }
-        }
-      } catch (e) {
-        // Continue with current dynamicSystemPrompt
-      }
+      const fetchedText = await tryFetchKB();
 
-      if (syncTimer) clearTimeout(syncTimer);
-      syncTimer = setTimeout(syncKnowledgeBase, 60000);
+      if (fetchedText) {
+        dynamicSystemPrompt = PERSONA_HEADER + fetchedText;
+        kbLoaded = true;
+        kbBadge.className = "status-badge emerald";
+        kbBadgeText.innerText = "Online";
+        updateSyncTimerDisplay();
+        checkReadyState();
+        console.log("Knowledge Base updated from GitHub:", fetchedText.substring(0, 80) + "...");
+        
+        // Auto-refresh seamlessly every 60 seconds without reloading page or wiping chat
+        if (syncTimer) clearTimeout(syncTimer);
+        syncTimer = setTimeout(syncKnowledgeBase, 60000);
+      } else {
+        if (!kbLoaded) {
+          kbBadge.className = "status-badge rose";
+          kbBadgeText.innerText = "Retrying in 3s...";
+          checkReadyState();
+          if (syncTimer) clearTimeout(syncTimer);
+          syncTimer = setTimeout(syncKnowledgeBase, 3000);
+        } else {
+          console.warn("Background auto-refresh failed to fetch; retaining current knowledge base.");
+          if (syncTimer) clearTimeout(syncTimer);
+          syncTimer = setTimeout(syncKnowledgeBase, 60000);
+        }
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", syncKnowledgeBase);
+
+    function updateBadge(modelName, isFallback = false) {
+      const badge = document.getElementById('engineBadge');
+      const text = document.getElementById('badgeText');
+      if (isFallback) {
+        badge.className = "status-badge amber";
+        text.innerText = `${modelName} (Fallback)`;
+      } else {
+        badge.className = "status-badge emerald";
+        text.innerText = `${modelName}`;
+      }
     }
 
     function resetChat() {
@@ -483,18 +561,13 @@ MASTER KNOWLEDGE BASE:
           <img src="${AVATAR_URL}" alt="Ultraman Hensem" class="avatar-img" />
           <div class="bubble ai">
             <p><strong>Chat reset! Screen is clean now, bro. 🧹✨</strong></p>
-            <p>Ready for any WTS SOPs, coach fares, bus schedules, or let's start fresh!</p>
+            <p>Ask me any WTS SOP, bus schedules, or let's start fresh!</p>
           </div>
         </div>
       `;
-      const input = document.getElementById('userInput');
-      input.value = '';
-      input.focus();
+      document.getElementById('userInput').value = '';
+      document.getElementById('userInput').focus();
     }
-
-    window.addEventListener("DOMContentLoaded", () => {
-      syncKnowledgeBase();
-    });
 
     function handleKey(e) {
       if (e.key === 'Enter' && !e.shiftKey) {
@@ -509,6 +582,7 @@ MASTER KNOWLEDGE BASE:
 
     function simpleMarkdown(text) {
       let t = cleanCitations(text);
+
       t = t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
       t = t.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
       t = t.replace(/\*(.*?)\*/g, '<em>$1</em>');
@@ -587,9 +661,6 @@ MASTER KNOWLEDGE BASE:
       const text = input.value.trim();
       if (!text || !kbLoaded || !GEMINI_API_KEY) return;
 
-      const PRIMARY_ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent?key=${GEMINI_API_KEY}`;
-      const FALLBACK_ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${GEMINI_API_KEY}`;
-
       input.value = '';
       input.disabled = true;
       document.getElementById('sendBtn').disabled = true;
@@ -600,10 +671,14 @@ MASTER KNOWLEDGE BASE:
       chatHistory.push({ role: "user", parts: [{ text }] });
 
       try {
-        let response = await callGemini(PRIMARY_ENDPOINT, chatHistory);
+        let response = await callGemini(getEndpoint(PRIMARY_MODEL), chatHistory);
 
         if (!response.ok) {
-          response = await callGemini(FALLBACK_ENDPOINT, chatHistory);
+          console.warn(`Primary model ${PRIMARY_MODEL} returned ${response.status}. Falling back to: ${FALLBACK_MODEL}`);
+          updateBadge("3.8 Flash", true);
+          response = await callGemini(getEndpoint(FALLBACK_MODEL), chatHistory);
+        } else {
+          updateBadge("3.5 Flash-Lite", false);
         }
 
         removeTyping(typingId);
@@ -614,13 +689,15 @@ MASTER KNOWLEDGE BASE:
           appendMsg('ai', cleanReply);
           chatHistory.push({ role: "model", parts: [{ text: cleanReply }] });
         } else {
-          appendMsg('ai', "⚠️ *Service error. Please try again.*");
+          const err = response.data?.error?.message || response.error?.message || "Service error. Please try again.";
+          appendMsg('ai', `⚠️ **Service Alert:** ${err}`);
         }
       } catch (err) {
         removeTyping(typingId);
-        appendMsg('ai', `⚠️ *Connection error:* ${err.message || 'Check network connection.'}`);
+        appendMsg('ai', `⚠️ **Connection error:** ${err.message || 'Check network connection.'}`);
       } finally {
-        checkReadyState();
+        input.disabled = false;
+        document.getElementById('sendBtn').disabled = false;
         input.focus();
       }
     }
