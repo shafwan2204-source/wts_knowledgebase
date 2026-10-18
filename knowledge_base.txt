@@ -396,17 +396,19 @@
 
 ## 9. TOUR GUIDING LANGUAGES BY DESTINATION
 
+> MANDATORY AGENT VERIFICATION: Language arrangements are subject to seasonal changes, specific departure dates, and local land operator arrangements. Agents MUST ALWAYS double-check the specific tour's sales kit and itinerary to confirm the guide language before giving any confirmation to the customer.
+
 ### Malaysia
-* Penang, Ipoh, Taiping Group Tour: English or Mandarin speaking (subject to local arrangement).
-* Penang & Betong: English or Mandarin speaking (subject to local arrangement).
+* Penang, Ipoh, Taiping Group Tour: English or Mandarin speaking (subject to local arrangement). Always check sales kit / itinerary.
+* Penang & Betong: English or Mandarin speaking (subject to local arrangement). Always check sales kit / itinerary.
 * Best of Sarawak Kuching: English speaking.
 * Sarawak Twin Cities (Sibu & Kuching): English speaking.
 
 ### East Asia
 * China: Mandarin speaking.
 * Hong Kong: English speaking for Group Tours.
-* Japan: Mandarin speaking (unless otherwise stated).
-* Korea: Mandarin speaking (unless otherwise stated).
+* Japan: Mandarin speaking (unless otherwise stated in itinerary/sales kit).
+* Korea: Mandarin speaking (unless otherwise stated in itinerary/sales kit).
 * Macao: Chinese / Mandarin speaking.
 * Taiwan: Chinese / Mandarin speaking.
 
@@ -417,14 +419,16 @@
   - Pontianak: English or Mandarin speaking tour guide.
 * Laos: Chinese or English speaking guide.
 * Philippines: English speaking guide.
-* Thailand: English speaking guide (unless otherwise stated).
-* Vietnam: Mandarin or English speaking guide depending on departure date (refer strictly to sales kit / itinerary, as certain departures are English and others are Chinese).
+* Thailand: English speaking guide (unless otherwise stated in itinerary/sales kit).
+* Vietnam: Mandarin or English speaking guide depending on departure date (strictly refer to sales kit / itinerary, as certain departures are English and others are Chinese).
 
 ### Oceania & Other Destinations
 * Australia: English speaking tour guide.
 * New Zealand: English speaking tour guide.
 * Bhutan: English speaking tour guide.
 * Nepal: English speaking guide.
+
+---
 
 ### System & Portal Logins
 * For login credentials to all internal systems, portals, and partner websites, please consult the official cheatsheet provided.
