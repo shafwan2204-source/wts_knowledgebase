@@ -5,6 +5,7 @@
 * Your role is to assist agents and customers strictly in accordance with official WTS Travel policies, routing rules, operational contacts, escalation paths, and booking conditions outlined below.
 * Never invent policies, contact details, or commitments that deviate from this knowledge base.
 * If an answer, policy, or specific scenario is not documented in this knowledge base, do not guess, assume, or commit — contact your Team Lead for clarification before replying to the customer.
+* Agent Verification & Discretion: Agents must not blindly trust AI-generated answers and should always maintain a healthy doubt. If an agent has any huge doubt, suspicion of inaccuracy, or encounters unlisted scenarios, they must stop and clarify directly with their Team Lead before replying to or committing with the customer.
 
 ---
 
@@ -96,6 +97,11 @@
 * If the knowledge base does not have the answer to a question or specific scenario, agents must not guess or make assumptions.
 * Action: Contact the Team Lead for clarification before replying or committing to the customer.
 
+### Agent Verification & Discretion
+* Agents are required to critically evaluate all AI-provided responses rather than accepting them as absolute truth.
+* If there is any major doubt, inconsistency, or missing operational policy, agents must not guess, extrapolate, or proceed unassisted.
+* Action: Immediately escalate and clarify with the Team Lead before giving any final confirmation to the customer.
+
 ### TBF Referral & Internal Department Non-Response Escalations
 * Tour Booking Form (TBF): If a customer holds a Tour Booking Form (TBF), inquiries, issues, or follow-ups must always be referred back to the Main Escalation Group.
 * Internal Department Non-Response: If internal operating departments (such as Coach, MICE, Dream Ride, etc.) do not reply or fail to respond, agents must always escalate directly to the Team Lead.
@@ -146,6 +152,18 @@
 ---
 
 ## 4. BOOKING POLICIES & FARE RULES
+
+### Fuel Surcharge Policy (Effective 1 October 2026 Until Further Notice)
+* General Coach & Tour Package Bookings:
+  * Genting Highlands: $15 / pax (Tour Package) | $15 / pax (Coach Only)
+  * Kuala Lumpur: $15 / pax (Tour Package) | $15 / pax (Coach Only)
+  * Malacca: $10 / pax (Tour Package) | $10 / pax (Coach Only)
+  * Desaru: $5 / pax (Tour Package) | $5 / pax (Coach Only)
+  * Legoland: $3 / pax (Tour Package) | $3 / pax (Coach Only)
+* Charter & Group Tour Bookings:
+  * P2P Charter: $10 / pax
+  * Group Tour / Charter (1 Day): $10 / pax
+  * Group Tour / Charter (2 Days and above): $20 / pax
 
 ### Coach Fares, Estimates & General Hotline Policy
 * 2-Way Coach Price: Always quote bundled 2-way fare only (included fuel surcharge). Do not split departure vs. return unless customer specifically insists.
@@ -204,16 +222,16 @@
 ## 5. COACH, ROUTE & SYSTEM CODES
 
 ### System Bus Codes
-* Genting: `GOLD`
-* Genting Night Coach: `DELUXE GOLD`
-* Kuala Lumpur (KL): `WTS KL`
-* KL Night Coach: `NIGHT KL`
-* Melaka: `WTS MLK`
-* Legoland & Desaru: `40 SEAT`
+* Genting: GOLD
+* Genting Night Coach: DELUXE GOLD
+* Kuala Lumpur (KL): WTS KL
+* KL Night Coach: NIGHT KL
+* Melaka: WTS MLK
+* Legoland & Desaru: 40 SEAT
 
 ### Hotel Mapping Codes
-* Hotel Group: `MAL-GEN`
-* Hotel Name: `FIRST WORLD HOTEL (FWH-GGM2)`
+* Hotel Group: MAL-GEN
+* Hotel Name: FIRST WORLD HOTEL (FWH-GGM2)
 
 ### Overland & Route Details
 * Checkpoint Policy: Standard route uses Tuas Checkpoint. Woodlands Checkpoint is strictly used as backup during severe traffic congestion or immigration system failures.
@@ -327,7 +345,7 @@
 
 ---
 
-## 7. COACH PICKUP POINTS & GOOGLE MAPS LINKS (FOR GENTING ONLY)
+## 7. COACH PICKUP POINTS & GOOGLE MAPS LINKS
 
 1. Pasir Ris (Downtown East - Begonia Pickup Point)  
    https://maps.app.goo.gl/YYkC6V3BCeXpULYAA
@@ -368,11 +386,11 @@
 
 ### Operational Spreadsheets & Folders
 * Genting Non-Members Hotel Availability:  
-  https://docs.google.com/spreadsheets/d/1chSln8S18ninIZ3jOxIsiZC1h2fb0CBr1YVbBGUt5hI/edit?gid=1249783587#gid=1249783587
+  https://docs.google.com/spreadsheets/d/1chSln8S18ninIZ3jOxIsiZC1h2fb0CBr1YVbBGUt5hI/edit?gid=1249783587#gid=1249783587[cite: 3]
 * Melaka, KL, Iskandar Puteri, Desaru Hotel Availability:  
-  https://docs.google.com/spreadsheets/d/1rM91-9woePxAPpVJTpPQNXW-OClUF678dJi6-AujjpI/edit?gid=1298023628#gid=1298023628
+  https://docs.google.com/spreadsheets/d/1rM91-9woePxAPpVJTpPQNXW-OClUF678dJi6-AujjpI/edit?gid=1298023628#gid=1298023628[cite: 3]
 * Europe Dropbox LGE:  
-  https://www.dropbox.com/scl/fo/gjsjxvjzkwquihllq5cop/h?rlkey=5my1ktixixc70h02pqqbmjosj&e=3&dl=0
+  https://www.dropbox.com/scl/fo/gjsjxvjzkwquihllq5cop/h?rlkey=5my1ktixixc70h02pqqbmjosj&e=3&dl=0[cite: 3]
 
 ### System & Portal Logins
 * For login credentials to all internal systems, portals, and partner websites, please consult the official cheatsheet provided.
