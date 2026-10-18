@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ultraman Hensem - WTS Travel Ops AI</title>
+  <style>
+    :root {
+      --bg-base: #090d16;
+      --bg-panel: #0f172a;
+      --bg-surface: #1e293b;
+      --bg-surface-hover: #334155;
+      --border-subtle: #334155;
+      --border-accent: #2563eb;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-blue: #3b82f6;
+      --accent-blue-hover: #2563eb;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    header {
+      background: var(--bg-panel);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .badge-logo-img {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      object-fit: cover;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+    }
+
+    .brand-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #f1f5f9;
+      letter-spacing: -0.2px;
+    }
+
+    .brand-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .header-badges {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .status-badge.neutral {
+      background: rgba(148, 163, 184, 0.1);
+      color: var(--text-muted);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .status-badge.emerald {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--accent-emerald);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .status-badge.amber {
+      background: rgba(245, 158, 11, 0.1);
+      color: var(--accent-amber);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .status-badge.rose {
+      background: rgba(244, 63, 94, 0.1);
+      color: var(--accent-rose);
+      border: 1px solid rgba(244, 63, 94, 0.3);
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      box-shadow: 0 0 6px currentColor;
+    }
+
+    .reset-btn {
+      background: var(--bg-surface);
+      color: #cbd5e1;
+      border: 1px solid var(--border-subtle);
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .reset-btn:hover {
+      background: rgba(244, 63, 94, 0.15);
+      color: #fda4af;
+      border-color: rgba(244, 63, 94, 0.4);
+    }
+
+    #chatBox {
+      flex: 1;
+      overflow-y: auto;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      max-width: 920px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    #chatBox::-webkit-scrollbar { width: 6px; }
+    #chatBox::-webkit-scrollbar-thumb {
+      background: var(--border-subtle);
+      border-radius: 4px;
+    }
+
+    .msg-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .msg-row.user { justify-content: flex-end; }
+
+    .avatar-img {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface);
+    }
+
+    .avatar.me {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--accent-blue);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .bubble {
+      padding: 14px 18px;
+      font-size: 14px;
+      line-height: 1.6;
+      max-width: 82%;
+      border-radius: 12px;
+      word-break: break-word;
+    }
+
+    .bubble.ai {
+      background: var(--bg-panel);
+      border: 1px solid var(--border-subtle);
+      color: #e2e8f0;
+      border-top-left-radius: 2px;
+    }
+
+    .bubble.user {
+      background: var(--accent-blue);
+      color: #ffffff;
+      border-top-right-radius: 2px;
+      white-space: pre-wrap;
+    }
+
+    .bubble p { margin-bottom: 8px; }
+    .bubble p:last-child { margin-bottom: 0; }
+    .bubble strong { color: #f8fafc; font-weight: 600; }
+    .bubble em { color: #93c5fd; }
+    .bubble ul { margin-left: 20px; margin-bottom: 8px; list-style-type: disc; }
+    .bubble li { margin-bottom: 4px; }
+    .bubble blockquote {
+      border-left: 3px solid var(--accent-blue);
+      background: rgba(59, 130, 246, 0.08);
+      padding: 8px 12px;
+      margin: 8px 0;
+      border-radius: 0 6px 6px 0;
+      color: #cbd5e1;
+    }
+    .bubble a { color: #60a5fa; text-decoration: underline; word-break: break-all; }
+
+    .typing-box {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 16px 20px;
+    }
+    .dot {
+      width: 6px;
+      height: 6px;
+      background: #64748b;
+      border-radius: 50%;
+      animation: pulse 1.4s infinite ease-in-out both;
+    }
+    .dot:nth-child(1) { animation-delay: -0.32s; }
+    .dot:nth-child(2) { animation-delay: -0.16s; }
+
+    @keyframes pulse {
+      0%, 80%, 100% { transform: scale(0); opacity: 0.3; }
+      40% { transform: scale(1); opacity: 1; }
+    }
+
+    footer {
+      background: var(--bg-panel);
+      border-top: 1px solid var(--border-subtle);
+      padding: 16px 24px;
+      flex-shrink: 0;
+    }
+
+    .footer-inner {
+      max-width: 920px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .input-box { display: flex; gap: 10px; }
+
+    textarea {
+      flex: 1;
+      background: var(--bg-base);
+      border: 1px solid var(--border-subtle);
+      color: #f8fafc;
+      font-size: 14px;
+      padding: 12px 16px;
+      border-radius: 10px;
+      outline: none;
+      resize: none;
+      font-family: inherit;
+      line-height: 1.4;
+    }
+
+    textarea:focus {
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+    }
+
+    .send-btn {
+      background: var(--accent-blue);
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      padding: 0 24px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .send-btn:hover { background: var(--accent-blue-hover); }
+    button:disabled, textarea:disabled { opacity: 0.5; cursor: not-allowed; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand-wrap">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS42Xy7NB3R0Xy0MnT5mvmh2ovidQ7lE-tJKl9RDZ8EEchaE3n66Z5b6w&s=10" alt="Ultraman Hensem" class="badge-logo-img" />
+      <div>
+        <div class="brand-title">Ultraman Hensem</div>
+        <div class="brand-sub">WTS Travel Operations & Call Centre Assistant</div>
+      </div>
+    </div>
+    <div class="header-badges">
+      <div class="status-badge neutral" id="lastSyncBadge" title="Last background knowledge base refresh">
+        <span>🕒 Synced: --:--:--</span>
+      </div>
+      <div class="status-badge amber" id="kbBadge">
+        <div class="status-dot"></div>
+        <span id="kbBadgeText">Connecting to GitHub...</span>
+      </div>
+      <div class="status-badge emerald" id="engineBadge">
+        <div class="status-dot"></div>
+        <span id="badgeText">3.5 Flash-Lite</span>
+      </div>
+      <button class="reset-btn" type="button" onclick="resetChat()" title="Clear chat history and reset screen">
+        ↺ Reset Chat
+      </button>
+    </div>
+  </header>
+
+  <main id="chatBox">
+    <div class="msg-row">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS42Xy7NB3R0Xy0MnT5mvmh2ovidQ7lE-tJKl9RDZ8EEchaE3n66Z5b6w&s=10" alt="Ultraman Hensem" class="avatar-img" />
+      <div class="bubble ai">
+        <p><strong>Yo bro! Ultraman Hensem is in the house. 😎</strong></p>
+        <p>Ready to help settle any WTS SOPs, coach fares, bus schedules, or whatever inquiries you have. Ask away or chit chat casually pun boleh!</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="input-box">
+        <textarea id="userInput" rows="1" placeholder="Connecting knowledge base..." disabled onkeydown="handleKey(event)"></textarea>
+        <button type="button" class="send-btn" id="sendBtn" disabled onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    let GEMINI_API_KEY = "";
+    const AVATAR_URL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS42Xy7NB3R0Xy0MnT5mvmh2ovidQ7lE-tJKl9RDZ8EEchaE3n66Z5b6w&s=10";
+
+    // Communication handshake: receive API key from parent desktop wrapper
+    window.addEventListener('message', (event) => {
+      if (event.data && event.data.type === 'SET_KEY' && event.data.apiKey) {
+        GEMINI_API_KEY = event.data.apiKey;
+        checkReadyState();
+      }
+    });
+
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({ type: 'REQUEST_KEY' }, '*');
+    }
+
+    const PERSONA_HEADER = `SYSTEM INSTRUCTION: DUAL-MODE PERSONA (WORK KNOWLEDGE VS CASUAL BUDDY)
+
+IDENTITY:
+Your name is Ultraman Hensem. You are the dedicated AI Assistant for WTS Travel Call Centre & Operations.
+
+CORE OBJECTIVE:
+Analyze every user input to determine whether the inquiry is Work-Related (WTS Travel operations, bookings, policies, contacts, escalations) or Non-Work Related (casual chat, personal questions, greetings, banter). Adapt your persona, tone, and formatting accordingly.
+
+1. INTENT CLASSIFICATION:
+CONDITION A: WORK-RELATED QUERY
+- Source of Truth: Answer strictly and accurately using the MASTER KNOWLEDGE BASE below.
+- Tone: Professional, clear, concise, and structured (Call Centre / Customer Support Lead standard).
+- Rules: Never guess or extrapolate policies, contacts, or pricing rules. Follow operational directives strictly.
+- FORMATTING REQUIREMENT: Always use bullet points, bold key terms, and line breaks. DO NOT write single solid walls of text.
+
+CONDITION B: NON-WORK RELATED QUERY (Casual Chat, Jokes, Greetings)
+- Persona: Close friend / bro / kawan (as Ultraman Hensem).
+- Tone and Style: Casual, warm, witty, and grounded using natural Malaysian English / Manglish / BM slang (particles like lah, meh, bro, kan, jom, steady, ngam, settle, walao naturally).
+
+2. LOW CONFIDENCE OR UNLISTED INFO:
+- If an answer is not in the knowledge base, do not guess. Advise the agent to check with the Team Lead before committing to the customer.
+
+3. MIXED QUERIES (CASUAL + WORK):
+- Acknowledge casually in 1 short line (e.g., "Aduh bro, Ultraman Hensem tolong setelkan! Here are the details:").
+- Transition immediately into the professional, clear bullet-point answer based on the knowledge base.
+
+================================================================================
+MASTER KNOWLEDGE BASE (SYNCED DIRECTLY FROM GITHUB TXT):
+================================================================================
+`;
+
+    let dynamicSystemPrompt = "";
+    let kbLoaded = false;
+    let syncTimer = null;
+    let chatHistory = [];
+
+    // The remote GitHub raw file
+    const RAW_KB_URL = "https://raw.githubusercontent.com/shafwan2204-source/wts_knowledgebase/refs/heads/main/knowledge_base.txt";
+
+    function updateSyncTimerDisplay() {
+      const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      const badge = document.getElementById('lastSyncBadge');
+      if (badge) {
+        badge.innerHTML = `<span>🕒 Synced: ${timeStr}</span>`;
+      }
+    }
+
+    function checkReadyState() {
+      const input = document.getElementById('userInput');
+      const btn = document.getElementById('sendBtn');
+      if (kbLoaded && GEMINI_API_KEY) {
+        input.disabled = false;
+        btn.disabled = false;
+        input.placeholder = "Ask Ultraman Hensem anything or chat casually...";
+      } else if (!kbLoaded) {
+        input.disabled = true;
+        btn.disabled = true;
+        input.placeholder = "Connecting knowledge base from GitHub...";
+      } else if (!GEMINI_API_KEY) {
+        input.disabled = true;
+        btn.disabled = true;
+        input.placeholder = "Waiting for desktop API handshake...";
+      }
+    }
+
+    async function syncKnowledgeBase() {
+      const kbBadge = document.getElementById('kbBadge');
+      const kbBadgeText = document.getElementById('kbBadgeText');
+
+      try {
+        const uniqueTimestamp = Date.now() + "_" + Math.floor(Math.random() * 10000);
+        const res = await fetch(`${RAW_KB_URL}?t=${uniqueTimestamp}`, { cache: "no-store" });
+
+        if (res.ok) {
+          const fetchedText = await res.text();
+          if (fetchedText && fetchedText.trim().length > 100) {
+            dynamicSystemPrompt = PERSONA_HEADER + fetchedText;
+            kbLoaded = true;
+
+            kbBadge.className = "status-badge emerald";
+            kbBadgeText.innerText = "Connected";
+            updateSyncTimerDisplay();
+            checkReadyState();
+            console.log(`[GitHub KB Synced]: Loaded ${fetchedText.length} characters.`);
+
+            // Auto-refresh seamlessly every 60 seconds
+            if (syncTimer) clearTimeout(syncTimer);
+            syncTimer = setTimeout(syncKnowledgeBase, 60000);
+            return;
+          }
+        }
+        throw new Error("Invalid or empty response from GitHub");
+      } catch (e) {
+        console.warn("Failed to fetch knowledge base from GitHub, retrying in 5s:", e);
+        if (!kbLoaded) {
+          kbBadge.className = "status-badge rose";
+          kbBadgeText.innerText = "Retrying in 5s...";
+          checkReadyState();
+          if (syncTimer) clearTimeout(syncTimer);
+          syncTimer = setTimeout(syncKnowledgeBase, 5000);
+        } else {
+          // If already loaded before, retry in 60s without locking out
+          if (syncTimer) clearTimeout(syncTimer);
+          syncTimer = setTimeout(syncKnowledgeBase, 60000);
+        }
+      }
+    }
+
+    function resetChat() {
+      chatHistory = [];
+      const box = document.getElementById('chatBox');
+      box.innerHTML = `
+        <div class="msg-row">
+          <img src="${AVATAR_URL}" alt="Ultraman Hensem" class="avatar-img" />
+          <div class="bubble ai">
+            <p><strong>Chat reset! Screen is clean now, bro. 🧹✨</strong></p>
+            <p>Ready for any WTS SOPs, coach fares, bus schedules, or let's start fresh!</p>
+          </div>
+        </div>
+      `;
+      const input = document.getElementById('userInput');
+      input.value = '';
+      input.focus();
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      syncKnowledgeBase();
+    });
+
+    function updateBadge(modelName, isFallback = false) {
+      const badge = document.getElementById('engineBadge');
+      const text = document.getElementById('badgeText');
+      if (isFallback) {
+        badge.className = "status-badge amber";
+        text.innerText = `${modelName} (Fallback)`;
+      } else {
+        badge.className = "status-badge emerald";
+        text.innerText = `${modelName}`;
+      }
+    }
+
+    function handleKey(e) {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+      }
+    }
+
+    function cleanCitations(text) {
+      return text.replace(/\[cite:\s*[\d,\s]+\]/gi, '');
+    }
+
+    function simpleMarkdown(text) {
+      let t = cleanCitations(text);
+
+      t = t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      t = t.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      t = t.replace(/\*(.*?)\*/g, '<em>$1</em>');
+
+      const links = [];
+      t = t.replace(/\[(.*?)\]\((https?:\/\/[^\s)]+)\)/g, (match, label, url) => {
+        const id = `%%LINK_${links.length}%%`;
+        links.push(`<a href="${url}" target="_blank" rel="noopener">${label}</a>`);
+        return id;
+      });
+
+      t = t.replace(/\b(https?:\/\/[^\s<]+)/g, (match, url) => {
+        let cleanUrl = url;
+        let suffix = '';
+        while (cleanUrl.length > 0 && /[.,!?;:'")\]}]$/.test(cleanUrl)) {
+          suffix = cleanUrl.slice(-1) + suffix;
+          cleanUrl = cleanUrl.slice(0, -1);
+        }
+        return `<a href="${cleanUrl}" target="_blank" rel="noopener">${cleanUrl}</a>${suffix}`;
+      });
+
+      links.forEach((linkHtml, idx) => {
+        t = t.replace(`%%LINK_${idx}%%`, linkHtml);
+      });
+
+      const lines = t.split('\n');
+      let html = '';
+      let inList = false;
+
+      for (let line of lines) {
+        let trimmed = line.trim();
+        if (trimmed.startsWith('* ') || trimmed.startsWith('- ')) {
+          if (!inList) { html += '<ul>'; inList = true; }
+          html += `<li>${trimmed.substring(2)}</li>`;
+        } else if (trimmed.startsWith('&gt; ') || trimmed.startsWith('> ')) {
+          if (inList) { html += '</ul>'; inList = false; }
+          const bqContent = trimmed.replace(/^(&gt;|>)\s*/, '');
+          html += `<blockquote>${bqContent}</blockquote>`;
+        } else {
+          if (inList) { html += '</ul>'; inList = false; }
+          if (trimmed.length > 0) {
+            html += `<p>${trimmed}</p>`;
+          }
+        }
+      }
+      if (inList) html += '</ul>';
+      return html;
+    }
+
+    async function callGemini(endpoint, history) {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 20000);
+
+      try {
+        const res = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            systemInstruction: { parts: [{ text: dynamicSystemPrompt }] },
+            contents: history,
+            generationConfig: { temperature: 0.2, maxOutputTokens: 1500 }
+          }),
+          signal: controller.signal
+        });
+        clearTimeout(timer);
+        const data = await res.json();
+        return { status: res.status, ok: res.ok, data };
+      } catch (err) {
+        clearTimeout(timer);
+        return { status: 0, ok: false, error: err };
+      }
+    }
+
+    async function sendMessage() {
+      const input = document.getElementById('userInput');
+      const text = input.value.trim();
+      if (!text || !kbLoaded || !GEMINI_API_KEY) return;
+
+      const PRIMARY_ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/${PRIMARY_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
+      const FALLBACK_ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/${FALLBACK_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
+
+      input.value = '';
+      input.disabled = true;
+      document.getElementById('sendBtn').disabled = true;
+
+      appendMsg('user', text);
+      const typingId = showTyping();
+
+      chatHistory.push({ role: "user", parts: [{ text }] });
+
+      try {
+        let response = await callGemini(PRIMARY_ENDPOINT, chatHistory);
+
+        if (!response.ok) {
+          console.warn(`Primary model ${PRIMARY_MODEL} returned ${response.status}. Falling back to: ${FALLBACK_MODEL}`);
+          updateBadge("3.8 Flash", true);
+          response = await callGemini(FALLBACK_ENDPOINT, chatHistory);
+        } else {
+          updateBadge("3.5 Flash-Lite", false);
+        }
+
+        removeTyping(typingId);
+
+        if (response.ok && response.data?.candidates?.[0]?.content?.parts?.[0]?.text) {
+          const rawReply = response.data.candidates[0].content.parts[0].text;
+          const cleanReply = cleanCitations(rawReply);
+          appendMsg('ai', cleanReply);
+          chatHistory.push({ role: "model", parts: [{ text: cleanReply }] });
+        } else {
+          const err = response.data?.error?.message || response.error?.message || "Service error. Please try again.";
+          appendMsg('ai', `⚠️ **Service Alert:** ${err}`);
+        }
+      } catch (err) {
+        removeTyping(typingId);
+        appendMsg('ai', `⚠️ **Connection error:** ${err.message || 'Check network connection.'}`);
+      } finally {
+        checkReadyState();
+        input.focus();
+      }
+    }
+
+    function appendMsg(role, text) {
+      const box = document.getElementById('chatBox');
+      const row = document.createElement('div');
+      row.className = `msg-row ${role === 'user' ? 'user' : ''}`;
+
+      if (role === 'ai') {
+        row.innerHTML = `
+          <img src="${AVATAR_URL}" alt="Ultraman Hensem" class="avatar-img" />
+          <div class="bubble ai">${simpleMarkdown(text)}</div>
+        `;
+      } else {
+        row.innerHTML = `
+          <div class="bubble user">${text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")}</div>
+          <div class="avatar me">ME</div>
+        `;
+      }
+      box.appendChild(row);
+      box.scrollTop = box.scrollHeight;
+    }
+
+    function showTyping() {
+      const box = document.getElementById('chatBox');
+      const id = 'loader-' + Date.now();
+      const row = document.createElement('div');
+      row.id = id;
+      row.className = 'msg-row';
+      row.innerHTML = `
+        <img src="${AVATAR_URL}" alt="Ultraman Hensem" class="avatar-img" />
+        <div class="bubble ai typing-box">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+      `;
+      box.appendChild(row);
+      box.scrollTop = box.scrollHeight;
+      return id;
+    }
+
+    function removeTyping(id) {
+      const el = document.getElementById(id);
+      if (el) el.remove();
+    }
+  </script>
+</body>
+</html>
