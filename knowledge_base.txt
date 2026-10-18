@@ -140,14 +140,14 @@
 * **Standard Customer Script for Coach Pricing Queries**:
   > *"We regret to inform you that coach-only pricing is not available via our general hotline. Nevertheless, we can still help check whether slots are available. Should you wish to confirm the pricing, kindly contact or visit your nearest outlet at: https://www.wtstravel.com.sg/outlets/"*
 * **Indicative Estimated Coach Fares (Reference Only)**:
-  * **28-Seater Coach (Genting)**: Estimated SGD $90 – $110 per pax (2-way)
-  * **21-Seater Platinum Coach (Genting)**: Estimated SGD $120 – $140 per pax (2-way, to Genting only)
+  * **28-Seater Coach (Genting)**: Estimated SGD $90 – $110 per pax (2-way) (included fuel surcharge)
+  * **21-Seater Platinum Coach (Genting)**: Estimated SGD $120 – $140 per pax (2-way, to Genting only) (included fuel surcharge)
     * Designated pickup points strictly limited to: Tampines, Bukit Panjang, Choa Chu Kang, Sengkang
     * Conditions: Subject to availability, first-come, first-served
-  * **Melaka Coach**: Estimated SGD $75 – $95 per pax (2-way)
-  * **KL Coach**: Estimated SGD $85 – $105 per pax (2-way)
-  * **Desaru Coach**: Estimated SGD $53 – $73 per pax (2-way)
-  * **Legoland Coach**: Estimated SGD $29 – $49 per pax (2-way)
+  * **Melaka Coach**: Estimated SGD $75 – $95 per pax (2-way) (included fuel surcharge)
+  * **KL Coach**: Estimated SGD $85 – $105 per pax (2-way) (included fuel surcharge)
+  * **Desaru Coach**: Estimated SGD $53 – $73 per pax (2-way) (included fuel surcharge)
+  * **Legoland Coach**: Estimated SGD $29 – $49 per pax (2-way) (included fuel surcharge)
 
 ### Dream Ride Charter Rates & Policy
 * **Indicative Vehicle Types & Estimates**:
