@@ -316,7 +316,7 @@
       </div>
       <div class="status-badge amber" id="kbBadge">
         <div class="status-dot"></div>
-        <span id="kbBadgeText">Connecting to GitHub...</span>
+        <span id="kbBadgeText">Connecting...</span>
       </div>
       <div class="status-badge emerald" id="engineBadge">
         <div class="status-dot"></div>
@@ -348,20 +348,8 @@
   </footer>
 
   <script>
-    let GEMINI_API_KEY = "";
+    let GEMINI_API_KEY = window.GEMINI_API_KEY || "";
     const AVATAR_URL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS42Xy7NB3R0Xy0MnT5mvmh2ovidQ7lE-tJKl9RDZ8EEchaE3n66Z5b6w&s=10";
-
-    // Communication handshake: receive API key from parent desktop wrapper
-    window.addEventListener('message', (event) => {
-      if (event.data && event.data.type === 'SET_KEY' && event.data.apiKey) {
-        GEMINI_API_KEY = event.data.apiKey;
-        checkReadyState();
-      }
-    });
-
-    if (window.parent && window.parent !== window) {
-      window.parent.postMessage({ type: 'REQUEST_KEY' }, '*');
-    }
 
     const PERSONA_HEADER = `SYSTEM INSTRUCTION: DUAL-MODE PERSONA (WORK KNOWLEDGE VS CASUAL BUDDY)
 
@@ -390,7 +378,7 @@ CONDITION B: NON-WORK RELATED QUERY (Casual Chat, Jokes, Greetings)
 - Transition immediately into the professional, clear bullet-point answer based on the knowledge base.
 
 ================================================================================
-MASTER KNOWLEDGE BASE (SYNCED DIRECTLY FROM GITHUB TXT):
+MASTER KNOWLEDGE BASE:
 ================================================================================
 `;
 
@@ -399,7 +387,6 @@ MASTER KNOWLEDGE BASE (SYNCED DIRECTLY FROM GITHUB TXT):
     let syncTimer = null;
     let chatHistory = [];
 
-    // The remote GitHub raw file
     const RAW_KB_URL = "https://raw.githubusercontent.com/shafwan2204-source/wts_knowledgebase/refs/heads/main/knowledge_base.txt";
 
     function updateSyncTimerDisplay() {
@@ -413,62 +400,46 @@ MASTER KNOWLEDGE BASE (SYNCED DIRECTLY FROM GITHUB TXT):
     function checkReadyState() {
       const input = document.getElementById('userInput');
       const btn = document.getElementById('sendBtn');
+      const kbBadge = document.getElementById('kbBadge');
+      const kbBadgeText = document.getElementById('kbBadgeText');
+
       if (kbLoaded && GEMINI_API_KEY) {
+        kbBadge.className = "status-badge emerald";
+        kbBadgeText.innerText = "Connected";
         input.disabled = false;
         btn.disabled = false;
         input.placeholder = "Ask Ultraman Hensem anything or chat casually...";
-      } else if (!kbLoaded) {
-        input.disabled = true;
-        btn.disabled = true;
-        input.placeholder = "Connecting knowledge base from GitHub...";
-      } else if (!GEMINI_API_KEY) {
-        input.disabled = true;
-        btn.disabled = true;
-        input.placeholder = "Waiting for desktop API handshake...";
       }
     }
 
     async function syncKnowledgeBase() {
-      const kbBadge = document.getElementById('kbBadge');
-      const kbBadgeText = document.getElementById('kbBadgeText');
+      // 1. Check if desktop passed a preloaded knowledge base
+      if (window.PRELOADED_KB && window.PRELOADED_KB.length > 50) {
+        dynamicSystemPrompt = PERSONA_HEADER + window.PRELOADED_KB;
+        kbLoaded = true;
+        updateSyncTimerDisplay();
+        checkReadyState();
+      }
 
+      // 2. Refresh silently in background
       try {
         const uniqueTimestamp = Date.now() + "_" + Math.floor(Math.random() * 10000);
         const res = await fetch(`${RAW_KB_URL}?t=${uniqueTimestamp}`, { cache: "no-store" });
-
         if (res.ok) {
           const fetchedText = await res.text();
           if (fetchedText && fetchedText.trim().length > 100) {
             dynamicSystemPrompt = PERSONA_HEADER + fetchedText;
             kbLoaded = true;
-
-            kbBadge.className = "status-badge emerald";
-            kbBadgeText.innerText = "Connected";
             updateSyncTimerDisplay();
             checkReadyState();
-            console.log(`[GitHub KB Synced]: Loaded ${fetchedText.length} characters.`);
-
-            // Auto-refresh seamlessly every 60 seconds
-            if (syncTimer) clearTimeout(syncTimer);
-            syncTimer = setTimeout(syncKnowledgeBase, 60000);
-            return;
           }
         }
-        throw new Error("Invalid or empty response from GitHub");
       } catch (e) {
-        console.warn("Failed to fetch knowledge base from GitHub, retrying in 5s:", e);
-        if (!kbLoaded) {
-          kbBadge.className = "status-badge rose";
-          kbBadgeText.innerText = "Retrying in 5s...";
-          checkReadyState();
-          if (syncTimer) clearTimeout(syncTimer);
-          syncTimer = setTimeout(syncKnowledgeBase, 5000);
-        } else {
-          // If already loaded before, retry in 60s without locking out
-          if (syncTimer) clearTimeout(syncTimer);
-          syncTimer = setTimeout(syncKnowledgeBase, 60000);
-        }
+        // Retain existing KB
       }
+
+      if (syncTimer) clearTimeout(syncTimer);
+      syncTimer = setTimeout(syncKnowledgeBase, 60000);
     }
 
     function resetChat() {
@@ -492,18 +463,6 @@ MASTER KNOWLEDGE BASE (SYNCED DIRECTLY FROM GITHUB TXT):
       syncKnowledgeBase();
     });
 
-    function updateBadge(modelName, isFallback = false) {
-      const badge = document.getElementById('engineBadge');
-      const text = document.getElementById('badgeText');
-      if (isFallback) {
-        badge.className = "status-badge amber";
-        text.innerText = `${modelName} (Fallback)`;
-      } else {
-        badge.className = "status-badge emerald";
-        text.innerText = `${modelName}`;
-      }
-    }
-
     function handleKey(e) {
       if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault();
@@ -517,7 +476,6 @@ MASTER KNOWLEDGE BASE (SYNCED DIRECTLY FROM GITHUB TXT):
 
     function simpleMarkdown(text) {
       let t = cleanCitations(text);
-
       t = t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
       t = t.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
       t = t.replace(/\*(.*?)\*/g, '<em>$1</em>');
@@ -596,8 +554,8 @@ MASTER KNOWLEDGE BASE (SYNCED DIRECTLY FROM GITHUB TXT):
       const text = input.value.trim();
       if (!text || !kbLoaded || !GEMINI_API_KEY) return;
 
-      const PRIMARY_ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/${PRIMARY_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
-      const FALLBACK_ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/${FALLBACK_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
+      const PRIMARY_ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent?key=${GEMINI_API_KEY}`;
+      const FALLBACK_ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${GEMINI_API_KEY}`;
 
       input.value = '';
       input.disabled = true;
@@ -612,11 +570,7 @@ MASTER KNOWLEDGE BASE (SYNCED DIRECTLY FROM GITHUB TXT):
         let response = await callGemini(PRIMARY_ENDPOINT, chatHistory);
 
         if (!response.ok) {
-          console.warn(`Primary model ${PRIMARY_MODEL} returned ${response.status}. Falling back to: ${FALLBACK_MODEL}`);
-          updateBadge("3.8 Flash", true);
           response = await callGemini(FALLBACK_ENDPOINT, chatHistory);
-        } else {
-          updateBadge("3.5 Flash-Lite", false);
         }
 
         removeTyping(typingId);
@@ -627,12 +581,11 @@ MASTER KNOWLEDGE BASE (SYNCED DIRECTLY FROM GITHUB TXT):
           appendMsg('ai', cleanReply);
           chatHistory.push({ role: "model", parts: [{ text: cleanReply }] });
         } else {
-          const err = response.data?.error?.message || response.error?.message || "Service error. Please try again.";
-          appendMsg('ai', `⚠️ **Service Alert:** ${err}`);
+          appendMsg('ai', "⚠️ *Service error. Please try again.*");
         }
       } catch (err) {
         removeTyping(typingId);
-        appendMsg('ai', `⚠️ **Connection error:** ${err.message || 'Check network connection.'}`);
+        appendMsg('ai', `⚠️ *Connection error:* ${err.message || 'Check network connection.'}`);
       } finally {
         checkReadyState();
         input.focus();
