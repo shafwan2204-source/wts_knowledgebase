@@ -396,7 +396,7 @@
 
 ## 9. TOUR GUIDING LANGUAGES BY DESTINATION
 
-> MANDATORY AGENT VERIFICATION: Language arrangements are subject to seasonal changes, specific departure dates, and local land operator arrangements. Agents MUST ALWAYS double-check the specific tour's sales kit and itinerary to confirm the guide language before giving any confirmation to the customer.
+* MANDATORY AGENT VERIFICATION: Language arrangements are subject to seasonal changes, specific departure dates, and local land operator arrangements. Agents MUST ALWAYS double-check the specific tour's sales kit and itinerary to confirm the guide language before giving any confirmation to the customer.
 
 ### Malaysia
 * Penang, Ipoh, Taiping Group Tour: English or Mandarin speaking (subject to local arrangement). Always check sales kit / itinerary.
