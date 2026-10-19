@@ -64,6 +64,7 @@
 * Operating Hours: 11:00 AM – 9:00 PM Daily across all branches, including all Public Holidays (unless superseded by special operational notices such as Chinese New Year — always verify with the latest management notice).
 * Official Directory Link: Full outlet details can also be found at https://www.wtstravel.com.sg/outlets/
 * Branch Code / TBF Code Rule: The branch code is also known as the TBF code. It determines and identifies which branch an order originates from.
+* CapitaLand Voucher Acceptance: CapitaLand vouchers are accepted strictly and exclusively at WTS Travel branches located within properties under the CapitaLand Group (e.g., Lot One Shopping Mall). Other retail locations do not support voucher redemption.
 
 ### Outlet Details
 1. Suntec City Mall (SC / BTQ)
@@ -75,6 +76,7 @@
 3. Lot One Shopping Mall (CCK / BTB)
    * Address: 21 Choa Chu Kang Ave 4 #03-18, Lot One, Singapore 689812
    * Tel: +65 6764 8558 | Email: tour.cck@wtstravel.com.sg
+   * Note: Accepts CapitaLand voucher redemption.
 4. Causeway Point (CWP / BTD)
    * Address: 1 Woodlands Square, #05-19, Causeway Point, Singapore 738099
    * Tel: +65 6893 8558 | Email: tour.cwp@wtstravel.com.sg
@@ -159,6 +161,11 @@
 ---
 
 ## 4. BOOKING POLICIES & FARE RULES
+
+### CapitaLand Voucher Redemption Policy
+* Eligible Transactions: Customers can redeem CapitaLand vouchers for tour packages and travel bookings.
+* Location Restriction: Voucher redemption is strictly limited to specific locations. They are honored exclusively at WTS Travel retail branches located within properties under the CapitaLand Group (such as Lot One Shopping Mall).
+* Non-Supported Outlets: Other retail branch locations do not support or accept CapitaLand voucher redemptions.
 
 ### Coach Luggage Policy & Guidelines
 * Limitations: At present, there is no strict limitation on luggage size or piece quantity. However, all items must be able to fit comfortably within the designated coach luggage compartment.
