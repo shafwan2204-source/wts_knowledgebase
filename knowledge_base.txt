@@ -160,6 +160,16 @@
 
 ## 4. BOOKING POLICIES & FARE RULES
 
+### Coach Luggage Policy & Guidelines
+* Limitations: At present, there is no strict limitation on luggage size or piece quantity. However, all items must be able to fit comfortably within the designated coach luggage compartment.
+* Special Items (Wheelchairs, Baby Seats, Personal Belongings): Allowed onboard/in luggage compartments, provided they are permitted for cross-border travel and fully comply with border and customs regulations.
+* Liability & Passenger Care: All luggage and personal belongings are carried strictly at the passenger's own risk. WTS Travel and coach operators shall not be held liable for any loss, damage, scratches, or wear-and-tear incurred during the journey.
+* Packing Advice: Passengers are recommended to pack appropriately, label their belongings, and ensure all items are securely packed for a safe and comfortable trip.
+
+### Air Travel Luggage Policy (Check-In & Cabin / Hand-Carry)
+* Mandatory Verification Rule: Agents must always check the specific package sales kit and flight itinerary for the exact allowed check-in and hand-carry baggage allowances.
+* Variations by Airline & Tour: Baggage allowances vary significantly across different airlines (e.g., Full-Service vs. Low-Cost Carriers) as well as between different group tour packages. Never assume standard weights without cross-referencing the official sales kit.
+
 ### Child Half Twin (CHT) Rooming & Pricing Guide
 * Core Rule: Child Half Twin (CHT) applies when a child shares a standard twin room with **1 Adult**, occupying the second adult bed space instead of using an extra rollaway or sharing existing bedding. Therefore, **CHT is always paired with 1 Adult Twin**.
 * Rooming Scenarios:
@@ -258,10 +268,15 @@
 ### Availability Commitments
 * Always state "Subject to confirmation". NEVER guarantee or commit availability.
 
-### Coach Seating & Grouping Policy
+### Coach Seating, Grouping & Seat Selection Policy
 * Same Coach Guarantee: Only guaranteed if booked under the same invoice (identical travel date, pickup point, and drop-off point).
 * Separate Invoices: Cannot guarantee same coach; submit as a request only.
-* Seat Allocation: Assigned exclusively by the bus captain during boarding/check-in. Call centre and outlets do not pre-assign seats.
+* Seat Selection & Allocation Rules:
+  * **21-Seater Coaches (Genting Packages) & Special Departure Packages (Easybook)**: Customers may be able to select their seats or check availability directly during the booking process.
+  * **All Other Coach Types**: Advance seat selection is strictly NOT available. Seats are assigned on the departure day during the check-in and boarding process by the bus captain.
+* Seating Preference Requests:
+  * Customers may indicate seating preferences (e.g., front row, middle row).
+  * Requests can be noted and submitted to the operations team, but are strictly **NOT guaranteed** and will be fulfilled strictly subject to availability.
 
 ### Air Ticket Markup Surcharge
 * Full Service Carriers (SIA, Malaysia Airlines) per passenger:
@@ -269,16 +284,6 @@
   * Base Fare >= SGD $1,001: Add 3% markup of total fare
 * Low-Cost Carriers (Scoot, AirAsia) per passenger:
   * Any amount: Add flat SGD $25 markup
-
-### Coach Seating, Grouping & Seat Selection Policy
-* Same Coach Guarantee: Only guaranteed if booked under the same invoice (identical travel date, pickup point, and drop-off point).
-* Separate Invoices: Cannot guarantee same coach; submit as a request only.
-* Seat Selection & Allocation Rules:
-  - 21-Seater Coaches (Genting Packages) & Special Departure Packages (Easybook): Customers may be able to select their seats or check availability directly during the booking process.
-  - All Other Coach Types: Advance seat selection is strictly NOT available. Seats are assigned on the departure day during the check-in and boarding process by the bus captain.
-* Seating Preference Requests:
-  - Customers may indicate seating preferences (e.g., front row, middle row).
-  - Requests can be noted and submitted to the operations team, but are strictly NOT guaranteed and will be fulfilled strictly subject to availability.
 
 ---
 
