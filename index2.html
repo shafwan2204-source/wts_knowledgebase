@@ -195,6 +195,7 @@
       border-radius: 12px;
       word-break: break-word;
       white-space: pre-wrap;
+      position: relative;
     }
 
     .bubble.ai {
@@ -202,6 +203,7 @@
       border: 1px solid var(--border-subtle);
       color: #e2e8f0;
       border-top-left-radius: 2px;
+      width: 100%;
     }
 
     .bubble.user {
@@ -210,12 +212,80 @@
       border-top-right-radius: 2px;
     }
 
+    .bubble-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+    }
+
+    .bubble-author {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .copy-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s ease;
+      line-height: 1;
+    }
+
+    .copy-btn:hover {
+      background: rgba(59, 130, 246, 0.15);
+      color: #93c5fd;
+      border-color: var(--accent-blue);
+    }
+
+    .copy-btn.copied {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent-emerald);
+      border-color: rgba(16, 185, 129, 0.4);
+    }
+
     .bubble p { margin-bottom: 8px; }
     .bubble p:last-child { margin-bottom: 0; }
     .bubble strong { color: #f8fafc; font-weight: 600; }
     .bubble em { color: #93c5fd; }
-    .bubble ul { margin-left: 20px; margin-bottom: 8px; }
+    
+    .bubble h2 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #f8fafc;
+      margin: 12px 0 6px 0;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 4px;
+    }
+    .bubble h2:first-child { margin-top: 0; }
+
+    .bubble h3 {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #93c5fd;
+      margin: 10px 0 4px 0;
+    }
+    .bubble h3:first-child { margin-top: 0; }
+
+    .bubble ul, .bubble ol {
+      margin-left: 20px;
+      margin-bottom: 8px;
+    }
     .bubble li { margin-bottom: 4px; }
+
     .bubble blockquote {
       border-left: 3px solid var(--accent-blue);
       background: rgba(59, 130, 246, 0.08);
@@ -224,13 +294,48 @@
       border-radius: 0 6px 6px 0;
       color: #cbd5e1;
     }
+    
     .bubble a { color: #60a5fa; text-decoration: underline; word-break: break-all; }
+
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .bubble table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      text-align: left;
+    }
+
+    .bubble th {
+      background: rgba(59, 130, 246, 0.12);
+      color: #93c5fd;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border-subtle);
+      white-space: nowrap;
+    }
+
+    .bubble td {
+      padding: 8px 12px;
+      border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+      color: #cbd5e1;
+    }
+
+    .bubble tr:last-child td { border-bottom: none; }
+    .bubble tr:nth-child(even) td { background: rgba(255, 255, 255, 0.02); }
 
     .typing-box {
       display: flex;
       align-items: center;
       gap: 5px;
       padding: 16px 20px;
+      width: auto !important;
     }
     .dot {
       width: 6px;
@@ -250,7 +355,7 @@
     footer {
       background: var(--bg-panel);
       border-top: 1px solid var(--border-subtle);
-      padding: 16px 24px;
+      padding: 14px 24px;
       flex-shrink: 0;
     }
 
@@ -261,7 +366,41 @@
       flex-direction: column;
     }
 
-    .input-box { display: flex; gap: 10px; }
+    .quick-chips {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 10px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: thin;
+    }
+    .quick-chips::-webkit-scrollbar { height: 4px; }
+    .quick-chips::-webkit-scrollbar-thumb {
+      background: var(--border-subtle);
+      border-radius: 4px;
+    }
+    .chip-btn {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: #cbd5e1;
+      font-size: 11.5px;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: 9999px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .chip-btn:hover {
+      background: rgba(59, 130, 246, 0.15);
+      border-color: var(--accent-blue);
+      color: #93c5fd;
+    }
+
+    .input-box { display: flex; gap: 10px; align-items: flex-end; }
 
     textarea {
       flex: 1;
@@ -269,12 +408,17 @@
       border: 1px solid var(--border-subtle);
       color: #f8fafc;
       font-size: 14px;
-      padding: 12px 16px;
+      padding: 11px 16px;
       border-radius: 10px;
       outline: none;
       resize: none;
       font-family: inherit;
       line-height: 1.4;
+      min-height: 44px;
+      max-height: 130px;
+      overflow-y: auto;
+      box-sizing: border-box;
+      transition: height 0.1s ease;
     }
 
     textarea:focus {
@@ -288,9 +432,12 @@
       border: none;
       border-radius: 10px;
       padding: 0 24px;
+      height: 44px;
       font-size: 14px;
       font-weight: 600;
       cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.2s ease;
     }
 
     .send-btn:hover { background: var(--accent-blue-hover); }
@@ -326,17 +473,33 @@
   <main id="chatBox">
     <div class="msg-row">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS42Xy7NB3R0Xy0MnT5mvmh2ovidQ7lE-tJKl9RDZ8EEchaE3n66Z5b6w&s=10" alt="Ultraman Hensem" class="avatar-img" />
-      <div class="bubble ai">
-        <p><strong>Yo bro! Ultraman Hensem is here. 😎</strong></p>
-        <p>Ready to help out with any WTS SOPs, bus schedules, or whatever you need. Ask away, or just drop by for a quick chat!</p>
+      <div class="bubble ai" id="bubble-welcome">
+        <div class="bubble-header">
+          <span class="bubble-author">Ultraman Hensem</span>
+          <button type="button" class="copy-btn" id="btn-copy-welcome" onclick="copyMessage('welcome')">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            <span>Copy</span>
+          </button>
+        </div>
+        <div class="bubble-content">
+          <p><strong>Yo bro! Ultraman Hensem is here. 😎</strong></p>
+          <p>Ready to help out with any WTS SOPs, bus schedules, or whatever you need. Ask away, or just drop by for a quick chat!</p>
+        </div>
       </div>
     </div>
   </main>
 
   <footer>
     <div class="footer-inner">
+      <div class="quick-chips">
+        <button type="button" class="chip-btn" onclick="sendQuickPrompt('What is the Genting coach departure and return schedule?')">🚌 Genting Schedule</button>
+        <button type="button" class="chip-btn" onclick="sendQuickPrompt('What is the policy for coach-only pricing on the general hotline?')">🎫 Coach Pricing SOP</button>
+        <button type="button" class="chip-btn" onclick="sendQuickPrompt('Who is exempted from submitting MDAC when entering Malaysia?')">🛂 MDAC Exemption</button>
+        <button type="button" class="chip-btn" onclick="sendQuickPrompt('How do we calculate Genting room upgrades and extensions?')">🏨 Room Upgrade Formulas</button>
+        <button type="button" class="chip-btn" onclick="sendQuickPrompt('What is the mandatory 4W1H information to collect for customer complaints?')">⚠️ Complaint 4W1H</button>
+      </div>
       <div class="input-box">
-        <textarea id="userInput" rows="1" placeholder="Connecting knowledge base..." disabled onkeydown="handleKey(event)"></textarea>
+        <textarea id="userInput" rows="1" placeholder="Connecting knowledge base..." disabled onkeydown="handleKey(event)" oninput="autoResizeTextarea(this)"></textarea>
         <button type="button" class="send-btn" id="sendBtn" disabled onclick="sendMessage()">Send</button>
       </div>
     </div>
@@ -348,6 +511,7 @@
 
     const PRIMARY_MODEL = "gemini-3.5-flash-lite";
     const FALLBACK_MODEL = "gemini-3.8-flash";
+    const MAX_HISTORY_TURNS = 10; // Sliding window: keep last 10 messages for prompt efficiency
 
     const PERSONA_HEADER = `SYSTEM INSTRUCTION: DUAL-MODE PERSONA (WORK KNOWLEDGE VS CASUAL BUDDY)
 
@@ -386,6 +550,9 @@ MASTER KNOWLEDGE BASE:
     let kbLoaded = false;
     let syncTimer = null;
     let chatHistory = [];
+    const messageStore = {
+      welcome: "Yo bro! Ultraman Hensem is here. 😎\n\nReady to help out with any WTS SOPs, bus schedules, or whatever you need. Ask away, or just drop by for a quick chat!"
+    };
 
     // 1. Handshake Listener: Receive key from desktop wrapper via postMessage
     window.addEventListener('message', (event) => {
@@ -441,10 +608,11 @@ MASTER KNOWLEDGE BASE:
         return text;
       }
 
+      const ts = Date.now();
       const endpoints = [
-        `${TARGET_FILE}?t=${Date.now()}`,
-        `https://api.allorigins.win/raw?url=${encodeURIComponent(TARGET_FILE)}`,
-        `https://cdn.jsdelivr.net/gh/shafwan2204-source/wts_knowledgebase@main/knowledge_base.txt?t=${Date.now()}`
+        `${TARGET_FILE}?t=${ts}`,
+        `https://api.allorigins.win/raw?url=${encodeURIComponent(TARGET_FILE + '?t=' + ts)}`,
+        `https://corsproxy.io/?url=${encodeURIComponent(TARGET_FILE + '?t=' + ts)}`
       ];
 
       for (const url of endpoints) {
@@ -534,14 +702,38 @@ MASTER KNOWLEDGE BASE:
       box.innerHTML = `
         <div class="msg-row">
           <img src="${AVATAR_URL}" alt="Ultraman Hensem" class="avatar-img" />
-          <div class="bubble ai">
-            <p><strong>Chat reset! Screen is clean now, bro. 🧹✨</strong></p>
-            <p>Ready to help out with any WTS SOPs, bus schedules, or whatever you need. Ask away, or just drop by for a quick chat!</p>
+          <div class="bubble ai" id="bubble-welcome">
+            <div class="bubble-header">
+              <span class="bubble-author">Ultraman Hensem</span>
+              <button type="button" class="copy-btn" id="btn-copy-welcome" onclick="copyMessage('welcome')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span>Copy</span>
+              </button>
+            </div>
+            <div class="bubble-content">
+              <p><strong>Chat reset! Screen is clean now, bro. 🧹✨</strong></p>
+              <p>Ready to help out with any WTS SOPs, bus schedules, or whatever you need. Ask away, or just drop by for a quick chat!</p>
+            </div>
           </div>
         </div>
       `;
-      document.getElementById('userInput').value = '';
-      document.getElementById('userInput').focus();
+      const input = document.getElementById('userInput');
+      input.value = '';
+      input.style.height = 'auto';
+      input.focus();
+    }
+
+    function autoResizeTextarea(el) {
+      el.style.height = 'auto';
+      el.style.height = Math.min(el.scrollHeight, 130) + 'px';
+    }
+
+    function sendQuickPrompt(promptText) {
+      const input = document.getElementById('userInput');
+      if (input.disabled) return;
+      input.value = promptText;
+      autoResizeTextarea(input);
+      sendMessage();
     }
 
     function handleKey(e) {
@@ -551,8 +743,77 @@ MASTER KNOWLEDGE BASE:
       }
     }
 
+    function copyMessage(msgId) {
+      const text = messageStore[msgId];
+      if (!text) return;
+
+      const btn = document.getElementById(`btn-copy-${msgId}`);
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(() => showCopied(btn)).catch(() => fallbackCopy(text, btn));
+      } else {
+        fallbackCopy(text, btn);
+      }
+    }
+
+    function fallbackCopy(text, btn) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        showCopied(btn);
+      } catch (err) {
+        console.error('Copy fallback failed:', err);
+      }
+      document.body.removeChild(ta);
+    }
+
+    function showCopied(btn) {
+      if (!btn) return;
+      const originalHtml = btn.innerHTML;
+      btn.classList.add('copied');
+      btn.innerHTML = `<span>Copied! ✓</span>`;
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.innerHTML = originalHtml;
+      }, 2000);
+    }
+
     function cleanCitations(text) {
       return text.replace(/\[cite:\s*[\d,\s]+\]/gi, '');
+    }
+
+    function parseTableRow(line) {
+      let parts = line.split('|').map(s => s.trim());
+      if (parts.length > 1 && parts[0] === '') parts.shift();
+      if (parts.length > 1 && parts[parts.length - 1] === '') parts.pop();
+      return parts;
+    }
+
+    function renderMarkdownTable(rows) {
+      if (rows.length === 0) return '';
+      let out = '<div class="table-container"><table>';
+      let startIndex = 0;
+      if (rows.length > 1 && /^[\s|:-]+$/.test(rows[1])) {
+        out += '<thead><tr>';
+        const headers = parseTableRow(rows[0]);
+        headers.forEach(h => { out += `<th>${h}</th>`; });
+        out += '</tr></thead><tbody>';
+        startIndex = 2;
+      } else {
+        out += '<tbody>';
+      }
+      for (let r = startIndex; r < rows.length; r++) {
+        out += '<tr>';
+        const cells = parseTableRow(rows[r]);
+        cells.forEach(c => { out += `<td>${c}</td>`; });
+        out += '</tr>';
+      }
+      out += '</tbody></table></div>';
+      return out;
     }
 
     function simpleMarkdown(text) {
@@ -585,25 +846,59 @@ MASTER KNOWLEDGE BASE:
 
       const lines = t.split('\n');
       let html = '';
-      let inList = false;
+      let inUl = false;
+      let inOl = false;
+      let inTable = false;
+      let tableRows = [];
+
+      function closeBlocks() {
+        if (inUl) { html += '</ul>'; inUl = false; }
+        if (inOl) { html += '</ol>'; inOl = false; }
+        if (inTable) { html += renderMarkdownTable(tableRows); inTable = false; tableRows = []; }
+      }
 
       for (let line of lines) {
         let trimmed = line.trim();
-        if (trimmed.startsWith('* ') || trimmed.startsWith('- ')) {
-          if (!inList) { html += '<ul>'; inList = true; }
+
+        // Check if line is a table row
+        if (trimmed.includes('|') && (trimmed.startsWith('|') || trimmed.endsWith('|') || /^[^|]+(\s*\|\s*[^|]+)+$/.test(trimmed))) {
+          if (inUl) { html += '</ul>'; inUl = false; }
+          if (inOl) { html += '</ol>'; inOl = false; }
+          inTable = true;
+          tableRows.push(trimmed);
+          continue;
+        } else if (inTable) {
+          html += renderMarkdownTable(tableRows);
+          inTable = false;
+          tableRows = [];
+        }
+
+        if (trimmed.startsWith('### ')) {
+          closeBlocks();
+          html += `<h3>${trimmed.substring(4)}</h3>`;
+        } else if (trimmed.startsWith('## ')) {
+          closeBlocks();
+          html += `<h2>${trimmed.substring(3)}</h2>`;
+        } else if (trimmed.startsWith('* ') || trimmed.startsWith('- ')) {
+          if (inOl) { html += '</ol>'; inOl = false; }
+          if (!inUl) { html += '<ul>'; inUl = true; }
           html += `<li>${trimmed.substring(2)}</li>`;
+        } else if (/^\d+\.\s+/.test(trimmed)) {
+          if (inUl) { html += '</ul>'; inUl = false; }
+          if (!inOl) { html += '<ol>'; inOl = true; }
+          html += `<li>${trimmed.replace(/^\d+\.\s+/, '')}</li>`;
         } else if (trimmed.startsWith('&gt; ') || trimmed.startsWith('> ')) {
-          if (inList) { html += '</ul>'; inList = false; }
+          closeBlocks();
           const bqContent = trimmed.replace(/^(&gt;|>)\s*/, '');
           html += `<blockquote>${bqContent}</blockquote>`;
         } else {
-          if (inList) { html += '</ul>'; inList = false; }
+          closeBlocks();
           if (trimmed.length > 0) {
             html += `<p>${trimmed}</p>`;
           }
         }
       }
-      if (inList) html += '</ul>';
+      closeBlocks();
       return html;
     }
 
@@ -638,6 +933,7 @@ MASTER KNOWLEDGE BASE:
       if (!text || !kbLoaded || !GEMINI_API_KEY) return;
 
       input.value = '';
+      input.style.height = 'auto';
       input.disabled = true;
       document.getElementById('sendBtn').disabled = true;
 
@@ -647,12 +943,14 @@ MASTER KNOWLEDGE BASE:
       chatHistory.push({ role: "user", parts: [{ text }] });
 
       try {
-        let response = await callGemini(PRIMARY_MODEL, chatHistory);
+        // Sliding history window for token efficiency and high speed
+        const historyPayload = chatHistory.slice(-MAX_HISTORY_TURNS);
+        let response = await callGemini(PRIMARY_MODEL, historyPayload);
 
         if (!response.ok) {
           console.warn(`Primary model ${PRIMARY_MODEL} returned ${response.status}. Falling back to: ${FALLBACK_MODEL}`);
           updateBadge("3.8 Flash", true);
-          response = await callGemini(FALLBACK_MODEL, chatHistory);
+          response = await callGemini(FALLBACK_MODEL, historyPayload);
         } else {
           updateBadge("3.5 Flash-Lite", false);
         }
@@ -664,6 +962,11 @@ MASTER KNOWLEDGE BASE:
           const cleanReply = cleanCitations(rawReply);
           appendMsg('ai', cleanReply);
           chatHistory.push({ role: "model", parts: [{ text: cleanReply }] });
+
+          // Keep in-memory chatHistory bounded
+          if (chatHistory.length > 30) {
+            chatHistory = chatHistory.slice(-20);
+          }
         } else {
           const err = response.data?.error?.message || response.error?.message || "Service error. Please try again.";
           appendMsg('ai', `⚠️ **Service Alert:** ${err}`);
@@ -684,9 +987,21 @@ MASTER KNOWLEDGE BASE:
       row.className = `msg-row ${role === 'user' ? 'user' : ''}`;
 
       if (role === 'ai') {
+        const msgId = 'msg-' + Date.now() + '-' + Math.floor(Math.random() * 1000);
+        messageStore[msgId] = text;
+
         row.innerHTML = `
           <img src="${AVATAR_URL}" alt="Ultraman Hensem" class="avatar-img" />
-          <div class="bubble ai">${simpleMarkdown(text)}</div>
+          <div class="bubble ai" id="bubble-${msgId}">
+            <div class="bubble-header">
+              <span class="bubble-author">Ultraman Hensem</span>
+              <button type="button" class="copy-btn" id="btn-copy-${msgId}" onclick="copyMessage('${msgId}')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span>Copy</span>
+              </button>
+            </div>
+            <div class="bubble-content">${simpleMarkdown(text)}</div>
+          </div>
         `;
       } else {
         row.innerHTML = `
