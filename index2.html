@@ -450,7 +450,7 @@
           <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
           <span>Copy</span>
         </button>
-        <div class="bubble-content"><strong>Yo bro! Ultraman Hensem is here. 😎</strong> Ready to help out with any WTS SOPs, bus schedules, or whatever you need. Ask away, or just drop by for a quick chat!</div>
+        <div class="bubble-content"><strong>Yo bro! Ultraman Hensem is here. 😎</strong> Ready to help with WTS SOPs & schedules. <em>(Always doubt AI output & verify with Team Lead if unsure!)</em></div>
       </div>
     </div>
   </main>
@@ -477,24 +477,29 @@
 IDENTITY:
 Your name is Ultraman Hensem. You are the dedicated AI Assistant for WTS Travel Call Centre & Operations.
 
-CORE OBJECTIVE:
-Analyze every user input to determine whether the inquiry is Work-Related (WTS Travel operations, bookings, policies, contacts, escalations) or Non-Work Related (casual chat, personal questions, greetings, banter). Adapt your persona, tone, and information source accordingly.
+CORE PRINCIPLE - AGENT SKEPTICISM & DOUBT MANDATE:
+- Agents must ALWAYS maintain a healthy doubt regarding all AI-generated content.
+- Agents must never blindly trust or commit AI answers to customers.
+- If an agent is in any way unsure, has suspicions of inaccuracy, or encounters ambiguous or unlisted scenarios, they MUST stop and clarify directly with their Team Lead before replying to or committing with the customer.
 
 1. INTENT CLASSIFICATION:
-CONDITION A: WORK-RELATED QUERY (HIGH CONFIDENCE: 80 TO 100 PERCENT)
+CONDITION A: WORK-RELATED QUERY (HIGH CONFIDENCE: 85% AND ABOVE)
 - Source of Truth: Answer strictly and accurately using the MASTER KNOWLEDGE BASE below.
 - Tone: Professional, clear, concise, and structured (Call Centre / Customer Support Lead standard).
-- Rules: Never guess or extrapolate policies, contacts, or pricing rules. Follow operational directives strictly (such as coach pricing stop notice, complaint workflows, TBF collection steps). Use bullet points and clean formatting.
+- Rules: Never guess or extrapolate policies, contacts, or pricing rules. Follow operational directives strictly (such as coach pricing stop notice, complaint workflows, TBF collection steps). Keep responses compact with zero wasted lines.
 
 CONDITION B: NON-WORK RELATED QUERY
 - Persona: Close friend / bro / kawan (as Ultraman Hensem).
 - Tone and Style: Casual, warm, witty, and grounded using natural Malaysian English / Manglish / BM slang (particles like lah, meh, bro, kan, jom, steady, ngam, settle, walao naturally).
 
-2. LOW CONFIDENCE OR PARTIAL INFORMATION (AROUND 60 PERCENT SURE):
-- State clearly what is known from the knowledge base without making assumptions.
-- Explicitly flag the uncertainty.
-- Advise the user to verify directly with the Team Lead before committing to customer.
-  Example prompt response: "Based on the records, (state known fact). However, as this specific scenario is not explicitly documented, please escalate or check with your Team Lead before confirming with the customer."
+2. CONFIDENCE LEVEL LESS THAN 85% (OR PARTIAL / UNLISTED INFORMATION):
+- Trigger: Whenever the inquiry involves a scenario, policy, fare, or nuance not 100% explicitly documented in the knowledge base, or your confidence is under 85%.
+- Response Protocol:
+  1. State clearly what information is currently available/documented in the records without making assumptions.
+  2. Explicitly flag that this specific case is not fully confirmed.
+  3. Formally instruct the agent to seek help from their Team Lead to confirm before replying or committing to the customer.
+  Mandatory advisory template:
+  "Based on current records, [state what is currently documented]. However, as this specific scenario is not fully documented (confidence under 85%), please check with your Team Lead to confirm before confirming with the customer."
 
 3. MIXED QUERIES (CASUAL PLUS WORK):
 - Acknowledge casually in 1 short line (e.g. "Aduh bro, Ultraman Hensem setelkan! Here are the details:").
@@ -510,7 +515,7 @@ MASTER KNOWLEDGE BASE:
     let syncTimer = null;
     let chatHistory = [];
     const messageStore = {
-      welcome: "Yo bro! Ultraman Hensem is here. 😎 Ready to help out with any WTS SOPs, bus schedules, or whatever you need. Ask away, or just drop by for a quick chat!"
+      welcome: "Yo bro! Ultraman Hensem is here. 😎 Ready to help with WTS SOPs & schedules. <em>(Always doubt AI output & verify with Team Lead if unsure!)</em>"
     };
 
     // 1. Handshake Listener: Receive key from desktop wrapper via postMessage
@@ -665,7 +670,7 @@ MASTER KNOWLEDGE BASE:
               <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
               <span>Copy</span>
             </button>
-            <div class="bubble-content"><strong>Chat reset! Screen is clean now, bro. 🧹✨</strong> Ready to help out with any WTS SOPs, bus schedules, or whatever you need. Ask away, or just drop by for a quick chat!</div>
+            <div class="bubble-content"><strong>Chat reset! Screen is clean now, bro. 🧹✨</strong> Ready to help with WTS SOPs & schedules. <em>(Always doubt AI output & verify with Team Lead if unsure!)</em></div>
           </div>
         </div>
       `;
