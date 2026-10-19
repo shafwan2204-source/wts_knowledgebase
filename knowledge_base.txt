@@ -111,6 +111,11 @@
 * If there is any major doubt, inconsistency, or missing operational policy, agents must not guess, extrapolate, or proceed unassisted.
 * Action: Immediately escalate and clarify with the Team Lead before giving any final confirmation to the customer.
 
+### Visa & Entry Requirement Inquiries SOP
+* If an agent inquires whether a traveler holding a specific nationality/passport requires a VISA to visit a specific destination (e.g., "[Country] passport travelling to [Destination], need visa?"):
+  * **Step 1 - Google Search**: Instruct the agent to search and verify via **Google search first** (specifically Google; do NOT use Bing, Yahoo, or alternative search engines).
+  * **Step 2 - Team Lead Escalation**: If the agent has verified on Google and is still not sure, **only then should they consult or escalate to their Team Lead**.
+
 ### TBF Referral & Internal Department Non-Response Escalations
 * Tour Booking Form (TBF): If a customer holds a Tour Booking Form (TBF), inquiries, issues, or follow-ups must always be referred back to the Main Escalation Group.
 * Internal Department Non-Response: If internal operating departments (such as Coach, MICE, Dream Ride, etc.) do not reply or fail to respond, agents must always escalate directly to the Team Lead.
@@ -326,7 +331,7 @@
 * Hotel Name: `FIRST WORLD HOTEL (FWH-GGM2)`[cite: 4]
 
 ### Overland & Route Details
-* Checkpoint Policy: Standard route uses Tuas Checkpoint[cite: 4]. Woodlands Checkpoint is strictly used as backup during severe traffic congestion or immigration system failures[cite: 4].
+* Checkpoint Policy: Standard route uses Tuas Checkpoint. Woodlands Checkpoint is strictly used as backup during severe traffic congestion or immigration system failures[cite: 4].
 * Legoland / Desaru Route[cite: 4]:
   * Singapore -> Legoland -> Desaru (via Tuas)[cite: 4]
   * Desaru -> Legoland -> Singapore (via Tuas)[cite: 4]
@@ -465,10 +470,10 @@
 ## 6. CRUISE POLICIES
 
 ### Official Cruise Websites
-* Dream Cruises / Star Voyager / Star Navigator: https://stardreamcruises.com/en-my
-* Royal Caribbean: https://www.royalcaribbean.com/
-* Princess Cruises: https://www.princess.com/
-* Disney Cruise Line: https://disneycruise.disney.go.com/
+* Dream Cruises / Star Voyager / Star Navigator: https://stardreamcruises.com/en-my[cite: 3]
+* Royal Caribbean: https://www.royalcaribbean.com/[cite: 3]
+* Princess Cruises: https://www.princess.com/[cite: 3]
+* Disney Cruise Line: https://disneycruise.disney.go.com/[cite: 3]
 
 ### Cruise Voucher Policy (Corporate / Gifts / Prize Giving)
 * Strictly No Dedicated Cruise Vouchers: WTS Travel does **NOT** sell dedicated "cruise vouchers" that customers can redeem for cruise packages (e.g., frequently requested by corporate clients for prize giving, event gifts, or incentives).
@@ -505,61 +510,61 @@
 * *Summary for Agents*: Across all major cruise lines (Dream, Star, Royal Caribbean, Disney), **24 weeks pregnant and above cannot board**.
 
 ### Senior Citizen Age Criteria
-* Genting Dream / Resorts World Cruises: 50+ years old per cabin[cite: 4].
-* Royal Caribbean: 55+ years old[cite: 4].
+* Genting Dream / Resorts World Cruises: 50+ years old per cabin[cite: 3, 4].
+* Royal Caribbean: 55+ years old[cite: 3, 4].
 
 ### Child & Infant Criteria on Cruises
 * Child and infant age definitions, cabin sharing policies, and fare categories vary by cruise liner.
 * Agents must always check directly inside the specific cruise reservation system for the exact age thresholds and pricing.
 
 ### Mandatory Online Check-In
-* Applicable Brands: Dream Cruises & Star Cruises[cite: 4].
-* Check-In Window: Opens 90 days before departure; strictly closes 48 hours prior to departure[cite: 4].
-* Web Portal: https://booking.stardreamcruises.com/webcheckin/[cite: 4]
+* Applicable Brands: Dream Cruises & Star Cruises[cite: 3, 4].
+* Check-In Window: Opens 90 days before departure; strictly closes 48 hours prior to departure[cite: 3, 4].
+* Web Portal: https://booking.stardreamcruises.com/webcheckin/[cite: 3, 4]
 
 ### Cruise Routing Details
-* Disney Cruise Adventure: Cruise to nowhere (operates exclusively in South China Sea)[cite: 4].
+* Disney Cruise Adventure: Cruise to nowhere (operates exclusively in South China Sea)[cite: 3, 4].
 
 ### Helper / Foreign Passport Visa Rules (Myanmar Passport)
-* Royal Caribbean: To Malaysia (No visa required); To Thailand (Visa REQUIRED, No Visa on Arrival allowed)[cite: 4].
-* Genting Dream: To Malaysia (No visa required); To Thailand (Visa REQUIRED, No Visa on Arrival allowed)[cite: 4].
+* Royal Caribbean: To Malaysia (No visa required); To Thailand (Visa REQUIRED, No Visa on Arrival allowed)[cite: 3, 4].
+* Genting Dream: To Malaysia (No visa required); To Thailand (Visa REQUIRED, No Visa on Arrival allowed)[cite: 3, 4].
 
 ---
 
 ## 7. COACH PICKUP POINTS & GOOGLE MAPS LINKS
 
 1. Pasir Ris (Downtown East - Begonia Pickup Point)  
-   https://maps.app.goo.gl/YYkC6V3BCeXpULYAA[cite: 4]
+   https://maps.app.goo.gl/YYkC6V3BCeXpULYAA[cite: 3]
 2. Kovan Hub (206 Hougang St. 21)  
-   https://maps.app.goo.gl/fVZ3mc2JP53wJPG99[cite: 4]
+   https://maps.app.goo.gl/fVZ3mc2JP53wJPG99[cite: 3]
 3. Ang Mo Kio (Along AMK Ave 8)  
-   https://maps.app.goo.gl/eWFXNWLSwsALVAxY8[cite: 4]
+   https://maps.app.goo.gl/eWFXNWLSwsALVAxY8[cite: 3]
 4. Sengkang (G16 Taxi Stand)  
-   https://maps.app.goo.gl/4v6KF2B8De9edVtm7[cite: 4]
+   https://maps.app.goo.gl/4v6KF2B8De9edVtm7[cite: 3]
 5. Suntec City (Tower 2 Coach Bay)  
-   https://maps.app.goo.gl/KPKGsjQZga5iiAqRA[cite: 4]
+   https://maps.app.goo.gl/KPKGsjQZga5iiAqRA[cite: 3]
 6. Tampines (Exit B)  
-   https://maps.app.goo.gl/QUq8EZmXMfKNnsak7[cite: 4]
+   https://maps.app.goo.gl/QUq8EZmXMfKNnsak7[cite: 3]
 7. The Woodleigh Mall (Bidadari Park Dr - Bus Stop)  
-   https://maps.app.goo.gl/PWQG8QB2By56pJWU9[cite: 4]
+   https://maps.app.goo.gl/PWQG8QB2By56pJWU9[cite: 3]
 8. Yishun (Along Yishun Ave 2)  
-   https://maps.app.goo.gl/MTXSCU8d2XoZAYFe7[cite: 4]
+   https://maps.app.goo.gl/MTXSCU8d2XoZAYFe7[cite: 3]
 9. Redhill Market (79 Redhill Lane)  
-   https://maps.app.goo.gl/BXGgcJ4bKw2TVA3M7[cite: 4]
+   https://maps.app.goo.gl/BXGgcJ4bKw2TVA3M7[cite: 3]
 10. Woodlands Causeway Point (In front of KFC)  
-    https://maps.app.goo.gl/T7HVf38tMQs1cck9A[cite: 4]
+    https://maps.app.goo.gl/T7HVf38tMQs1cck9A[cite: 3]
 11. Boon Lay (Jurong Point 1 Carpark Entrance)  
-    https://maps.app.goo.gl/2QQh5fCVRzPPH8oA8[cite: 4]
+    https://maps.app.goo.gl/2QQh5fCVRzPPH8oA8[cite: 3]
 12. Bukit Panjang Plaza (Taxi Stand)  
-    https://maps.app.goo.gl/V8zDDD5p5XzrLtrh7[cite: 4]
+    https://maps.app.goo.gl/V8zDDD5p5XzrLtrh7[cite: 3]
 13. Choa Chu Kang (Private Bus Pick-up Point)  
-    https://maps.app.goo.gl/BmbdVddobdqykx9p7[cite: 4]
+    https://maps.app.goo.gl/BmbdVddobdqykx9p7[cite: 3]
 14. Jurong East (Venture Ave Bus Bay No: 05)  
-    https://maps.app.goo.gl/k8jFPZkCX1md1jEN6[cite: 4]
+    https://maps.app.goo.gl/k8jFPZkCX1md1jEN6[cite: 3]
 15. Bedok Djitsun Mall (Near Refuse Centre)  
-    https://maps.app.goo.gl/gXJGupnt4ACFRnBa8[cite: 4]
+    https://maps.app.goo.gl/gXJGupnt4ACFRnBa8[cite: 3]
 16. Genting Main Terminal  
-    https://maps.app.goo.gl/cvX3HiFS2RLYoKJc7[cite: 4]
+    https://maps.app.goo.gl/cvX3HiFS2RLYoKJc7[cite: 3]
 
 ---
 
@@ -567,11 +572,11 @@
 
 ### Operational Spreadsheets & Folders
 * Genting Non-Members Hotel Availability:  
-  https://docs.google.com/spreadsheets/d/1chSln8S18ninIZ3jOxIsiZC1h2fb0CBr1YVbBGUt5hI/edit?gid=1249783587#gid=1249783587[cite: 4]
+  https://docs.google.com/spreadsheets/d/1chSln8S18ninIZ3jOxIsiZC1h2fb0CBr1YVbBGUt5hI/edit?gid=1249783587#gid=1249783587[cite: 3]
 * Melaka, KL, Iskandar Puteri, Desaru Hotel Availability:  
-  https://docs.google.com/spreadsheets/d/1rM91-9woePxAPpVJTpPQNXW-OClUF678dJi6-AujjpI/edit?gid=1298023628#gid=1298023628[cite: 4]
+  https://docs.google.com/spreadsheets/d/1rM91-9woePxAPpVJTpPQNXW-OClUF678dJi6-AujjpI/edit?gid=1298023628#gid=1298023628[cite: 3]
 * Europe Dropbox LGE:  
-  https://www.dropbox.com/scl/fo/gjsjxvjzkwquihllq5cop/h?rlkey=5my1ktixixc70h02pqqbmjosj&e=3&dl=0[cite: 4]
+  https://www.dropbox.com/scl/fo/gjsjxvjzkwquihllq5cop/h?rlkey=5my1ktixixc70h02pqqbmjosj&e=3&dl=0[cite: 3]
 
 ### System & Portal Logins
 * For login credentials to all internal systems, portals, and partner websites, please consult the official cheatsheet provided.
