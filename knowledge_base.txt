@@ -58,6 +58,7 @@
 * Official WTS Website: https://www.wtstravel.com.sg/[cite: 3]
 * Operating Hours: 11:00 AM – 9:00 PM (Daily across all branches)[cite: 3]
 * Official Directory Link: Full outlet details can also be found at https://www.wtstravel.com.sg/outlets/[cite: 3]
+* Branch Code / TBF Code Rule: The branch code is also known as the TBF code[cite: 3]. It determines and identifies which branch an order originates from[cite: 3].
 
 ### Outlet Details
 1. Suntec City Mall (SC / BTQ)[cite: 3]
@@ -85,9 +86,10 @@
    * Address: 11 Bidadari Park Drive, #B1-17 The Woodleigh Mall, Singapore 367803[cite: 3]
    * Tel: +65 6311 8558 | Email: tour.twm@wtstravel.com.sg[cite: 3]
 
-### Internal System Outlet Codes
+### Internal System Outlet & TBF Codes
 * BTP: ticketing@wtstravel.com.sg[cite: 3]
 * OLB / B2C: olb@wtstravel.com.sg[cite: 3]
+* Note: Each outlet abbreviation / code (e.g., BTQ, BTK, BTB, BTD, BTO, BTF, BTM, BTR/WM, BTP, OLB) doubles as its respective TBF code to trace booking origins[cite: 3].
 
 ---
 
@@ -155,34 +157,34 @@
 
 ### Child & Infant Age Definitions and Policies
 * General Age Categories (Overland & Overseas Packages):
-  - Child: 2 years old to 11 years old.
-  - Infant: Below 2 years old.
+  * Child: 2 years old to 11 years old.
+  * Infant: Below 2 years old.
 * Overland Packages:
-  - Infant Fare: Mostly Free of Charge (FOC).
-  - Seating Policy: Infants are strictly NOT entitled to a seat on the coach; they must sit on the parents' / guardian's lap.
+  * Infant Fare: Mostly Free of Charge (FOC).
+  * Seating Policy: Infants are strictly NOT entitled to a seat on the coach; they must sit on the parents' / guardian's lap.
 * Overland - Legoland Special Exception:
-  - Child: 3 years old to 11 years old.
-  - Infant: Below 3 years old.
+  * Child: 3 years old to 11 years old.
+  * Infant: Below 3 years old.
 * Bintan & Batam Packages:
-  - Agents should check the respective package sales kit / price sheet to verify if specific infant pricing applies.
+  * Agents should check the respective package sales kit / price sheet to verify if specific infant pricing applies.
 * Overseas Packages:
-  - Always verify the sales kit / itinerary to check whether specific infant pricing is provided or if the child is categorized as Child No Bed (CNB) / Child With Bed (CWB).
-  - If infant pricing is unlisted or unclear, agents must check with their Team Lead before confirming with the customer.
+  * Always verify the sales kit / itinerary to check whether specific infant pricing is provided or if the child is categorized as Child No Bed (CNB) / Child With Bed (CWB).
+  * If infant pricing is unlisted or unclear, agents must check with their Team Lead before confirming with the customer.
 * Cruise Bookings:
-  - Child and infant age definitions and fare rules vary significantly across cruise lines.
-  - Agents must always check directly within the specific cruise booking system, as each cruise brand maintains its own distinct age thresholds and price categories.
+  * Child and infant age definitions and fare rules vary significantly across cruise lines.
+  * Agents must always check directly within the specific cruise booking system, as each cruise brand maintains its own distinct age thresholds and price categories.
 
-### Fuel Surcharge Policy (Effective 1 October 2026 Until Further Notice)[cite: 2]
+### Fuel Surcharge Policy (Effective 1 October 2026 Until Further Notice)
 * General Coach & Tour Package Bookings:
-  * Genting Highlands: $15 / pax (Tour Package) | $15 / pax (Coach Only)[cite: 2]
-  * Kuala Lumpur: $15 / pax (Tour Package) | $15 / pax (Coach Only)[cite: 2]
-  * Malacca: $10 / pax (Tour Package) | $10 / pax (Coach Only)[cite: 2]
-  * Desaru: $5 / pax (Tour Package) | $5 / pax (Coach Only)[cite: 2]
-  * Legoland: $3 / pax (Tour Package) | $3 / pax (Coach Only)[cite: 2]
+  * Genting Highlands: $15 / pax (Tour Package) | $15 / pax (Coach Only)
+  * Kuala Lumpur: $15 / pax (Tour Package) | $15 / pax (Coach Only)
+  * Malacca: $10 / pax (Tour Package) | $10 / pax (Coach Only)
+  * Desaru: $5 / pax (Tour Package) | $5 / pax (Coach Only)
+  * Legoland: $3 / pax (Tour Package) | $3 / pax (Coach Only)
 * Charter & Group Tour Bookings:
-  * P2P Charter: $10 / pax[cite: 2]
-  * Group Tour / Charter (1 Day): $10 / pax[cite: 2]
-  * Group Tour / Charter (2 Days and above): $20 / pax[cite: 2]
+  * P2P Charter: $10 / pax
+  * Group Tour / Charter (1 Day): $10 / pax
+  * Group Tour / Charter (2 Days and above): $20 / pax
 
 ### Coach Fares, Estimates & General Hotline Policy
 * 2-Way Coach Price: Always quote bundled 2-way fare only (included fuel surcharge)[cite: 3]. Do not split departure vs. return unless customer specifically insists[cite: 3].
@@ -264,6 +266,47 @@
 * Collection Point: WTS Counter at First World Sky Avenue Bus Terminal (BT3)[cite: 3].
 * On-Site Contacts: Ah Leh (+6013-203 8813), Ah Fung (+6012-354 3660)[cite: 3].
 * Genting Special Concert (GGM) Quotation Formula: Weekend Rate + Concert Purchase-With-Purchase (PWP) Price (e.g., CASGENMEM Twin $109 + Concert PWP $90 = $199 per pax)[cite: 3].
+
+### Genting Package Upgrade Room & Extension Calculation Formulas
+
+#### 1. Twin Cities Non-Genting Member / Room Upgrade Formula
+* Scenario: Customer books a 4D3N Genting & KL Twin Cities package with upgraded Genting accommodation (e.g., SkyWorld Hotel):
+  * Day 1: Original Package Price + Upgraded Room Extension Rate (e.g., SkyWorld Hotel Room Extension rate)
+  * Day 2: Upgraded Room Extension Rate (e.g., SkyWorld Hotel Room Extension rate)
+  * Day 3: KL Hotel (already bundled in the package — no calculation needed)
+  * Day 4: Check-out (no calculation needed)
+
+#### 2. Dazzling Night Upgrade Room Formula (Genting)
+* Scenario: Customer books a 4D3N Genting package with upgraded accommodation (e.g., Highlands Hotel):
+  * Day 1: Original Package Price + Upgraded Room Extension Rate (e.g., Highlands Hotel Room Extension rate)
+  * Day 2: Upgraded Room Extension Rate (e.g., Highlands Hotel Room Extension rate)
+  * Day 3: Upgraded Room Extension Rate (e.g., Highlands Hotel Room Extension rate)
+  * Day 4: Check-out (no calculation needed)
+
+#### 3. CASGENCC Concert Upgrade Room Formula (Genting Member)
+* Scenario: Original concert package is 3D2N:
+  * Day 1: Upgraded Hotel Price (Single/Twin) + Concert Ticket Price (obtain official ticket price from Team Lead)
+  * Day 2: Upgraded Hotel Extension Rate
+  * Day 3: Check-out (no calculation needed)
+* Extension Remark for CASGENCC:
+  * If official concert package departure dates are scheduled for 2nd January & 3rd January, but customer travels from 1st – 4th January: 1st January is treated and calculated as an extension night.
+
+#### 4. GENCC Concert Upgrade Room Formula / Non-Member (Genting)
+* Scenario: Original concert package is 3D2N:
+  * Day 1: Upgraded Hotel Price (Single/Twin) + Concert Ticket Price (obtain from Status Email — usually issued by Jack)
+  * Day 2: Upgraded Hotel Extension Rate
+  * Day 3: Check-out (no calculation needed)
+
+#### 5. General Peak/Low Season Extension Rule (Applies to all Genting packages except Concerts / Blackout Dates)
+* Golden Rule for Tier Selection: Always identify and calculate the highest peak rate (Peak 2 / Peak 1) as the baseline package (Single/Twin) first, and calculate the remaining nights using their respective season extension rates.
+* Worked Example (1st January – 5th January 2026 stay):
+  * 1 January (Low): Calculate as Low Season Extension
+  * 2 January (Peak 1): Calculate as Peak 1 Extension
+  * 3 January (Peak 1):
+    * If 3D2N package: Included in package (no calculation needed)
+    * If 2D1N package: Calculate as Peak 1 Extension
+  * 4 January (Peak 2): Calculate the Peak 2 Single/Twin package price from here first (since it is the highest peak of the trip)
+  * 5 January: Check-out (no calculation needed)
 
 ---
 
@@ -441,8 +484,8 @@
 ### Southeast Asia
 * Cambodia: English speaking tour guide. (Mandarin guide requires a top-up surcharge; always refer to sales kit / itinerary).
 * Indonesia: Predominantly English speaking unless explicitly specified in the sales kit / itinerary:
-  * Bali, Bandung, Belitung, Medan, Surabaya, Yogyakarta, Labuan Bajo: English speaking tour guide.
-  * Pontianak: English or Mandarin speaking tour guide.
+  - Bali, Bandung, Belitung, Medan, Surabaya, Yogyakarta, Labuan Bajo: English speaking tour guide.
+  - Pontianak: English or Mandarin speaking tour guide.
 * Laos: Chinese or English speaking guide.
 * Philippines: English speaking guide.
 * Thailand: English speaking guide (unless otherwise stated in itinerary/sales kit).
