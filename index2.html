@@ -36,7 +36,7 @@
     header {
       background: var(--bg-panel);
       border-bottom: 1px solid var(--border-subtle);
-      padding: 14px 24px;
+      padding: 10px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -46,85 +46,82 @@
     .brand-wrap {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .badge-logo-img {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
       object-fit: cover;
       border: 1px solid var(--border-subtle);
-      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
     }
 
     .brand-title {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 600;
       color: #f1f5f9;
       letter-spacing: -0.2px;
     }
 
     .brand-sub {
-      font-size: 12px;
+      font-size: 11px;
       color: var(--text-muted);
     }
 
     .header-badges {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
 
     .status-badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       font-size: 11px;
-      padding: 4px 10px;
+      padding: 3px 8px;
       border-radius: 9999px;
       font-weight: 500;
-      transition: all 0.2s ease;
     }
 
     .status-badge.neutral {
       background: rgba(148, 163, 184, 0.1);
       color: var(--text-muted);
-      border: 1px solid rgba(148, 163, 184, 0.25);
+      border: 1px solid rgba(148, 163, 184, 0.2);
     }
 
     .status-badge.emerald {
       background: rgba(16, 185, 129, 0.1);
       color: var(--accent-emerald);
-      border: 1px solid rgba(16, 185, 129, 0.3);
+      border: 1px solid rgba(16, 185, 129, 0.25);
     }
 
     .status-badge.amber {
       background: rgba(245, 158, 11, 0.1);
       color: var(--accent-amber);
-      border: 1px solid rgba(245, 158, 11, 0.3);
+      border: 1px solid rgba(245, 158, 11, 0.25);
     }
 
     .status-badge.rose {
       background: rgba(244, 63, 94, 0.1);
       color: var(--accent-rose);
-      border: 1px solid rgba(244, 63, 94, 0.3);
+      border: 1px solid rgba(244, 63, 94, 0.25);
     }
 
     .status-dot {
-      width: 6px;
-      height: 6px;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
       background: currentColor;
-      box-shadow: 0 0 6px currentColor;
     }
 
     .reset-btn {
       background: var(--bg-surface);
       color: #cbd5e1;
       border: 1px solid var(--border-subtle);
-      padding: 5px 12px;
-      border-radius: 8px;
+      padding: 4px 10px;
+      border-radius: 6px;
       font-size: 11px;
       font-weight: 600;
       cursor: pointer;
@@ -139,16 +136,16 @@
     #chatBox {
       flex: 1;
       overflow-y: auto;
-      padding: 24px;
+      padding: 16px 20px;
       display: flex;
       flex-direction: column;
-      gap: 18px;
-      max-width: 920px;
+      gap: 12px;
+      max-width: 900px;
       width: 100%;
       margin: 0 auto;
     }
 
-    #chatBox::-webkit-scrollbar { width: 6px; }
+    #chatBox::-webkit-scrollbar { width: 5px; }
     #chatBox::-webkit-scrollbar-thumb {
       background: var(--border-subtle);
       border-radius: 4px;
@@ -157,25 +154,26 @@
     .msg-row {
       display: flex;
       align-items: flex-start;
-      gap: 12px;
+      gap: 10px;
       width: 100%;
     }
 
     .msg-row.user { justify-content: flex-end; }
 
     .avatar-img {
-      width: 36px;
-      height: 36px;
+      width: 32px;
+      height: 32px;
       border-radius: 8px;
       object-fit: cover;
       flex-shrink: 0;
       border: 1px solid var(--border-subtle);
       background: var(--bg-surface);
+      margin-top: 2px;
     }
 
     .avatar.me {
-      width: 36px;
-      height: 36px;
+      width: 32px;
+      height: 32px;
       border-radius: 8px;
       background: var(--accent-blue);
       color: #ffffff;
@@ -185,14 +183,16 @@
       font-size: 11px;
       font-weight: 700;
       flex-shrink: 0;
+      margin-top: 2px;
     }
 
     .bubble {
-      padding: 14px 18px;
-      font-size: 14px;
-      line-height: 1.6;
+      padding: 10px 14px;
+      font-size: 13.5px;
+      line-height: 1.5;
       max-width: 82%;
-      border-radius: 12px;
+      width: fit-content;
+      border-radius: 10px;
       word-break: break-word;
       white-space: pre-wrap;
       position: relative;
@@ -203,7 +203,7 @@
       border: 1px solid var(--border-subtle);
       color: #e2e8f0;
       border-top-left-radius: 2px;
-      width: 100%;
+      padding-right: 48px; /* space for compact copy button */
     }
 
     .bubble.user {
@@ -212,36 +212,22 @@
       border-top-right-radius: 2px;
     }
 
-    .bubble-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 8px;
-      padding-bottom: 6px;
-      border-bottom: 1px solid rgba(51, 65, 85, 0.5);
-    }
-
-    .bubble-author {
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--accent-blue);
-      text-transform: uppercase;
-      letter-spacing: 0.4px;
-    }
-
     .copy-btn {
+      position: absolute;
+      top: 6px;
+      right: 6px;
       background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid rgba(148, 163, 184, 0.15);
       color: var(--text-muted);
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 500;
-      padding: 3px 8px;
-      border-radius: 6px;
+      padding: 2px 6px;
+      border-radius: 5px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      transition: all 0.2s ease;
+      gap: 3px;
+      transition: all 0.15s ease;
       line-height: 1;
     }
 
@@ -254,44 +240,44 @@
     .copy-btn.copied {
       background: rgba(16, 185, 129, 0.15);
       color: var(--accent-emerald);
-      border-color: rgba(16, 185, 129, 0.4);
+      border-color: rgba(16, 185, 129, 0.3);
     }
 
-    .bubble p { margin-bottom: 8px; }
+    .bubble p { margin-bottom: 6px; }
     .bubble p:last-child { margin-bottom: 0; }
     .bubble strong { color: #f8fafc; font-weight: 600; }
     .bubble em { color: #93c5fd; }
     
     .bubble h2 {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 700;
       color: #f8fafc;
-      margin: 12px 0 6px 0;
+      margin: 8px 0 4px 0;
       border-bottom: 1px solid var(--border-subtle);
-      padding-bottom: 4px;
+      padding-bottom: 2px;
     }
     .bubble h2:first-child { margin-top: 0; }
 
     .bubble h3 {
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 600;
       color: #93c5fd;
-      margin: 10px 0 4px 0;
+      margin: 6px 0 2px 0;
     }
     .bubble h3:first-child { margin-top: 0; }
 
     .bubble ul, .bubble ol {
-      margin-left: 20px;
-      margin-bottom: 8px;
+      margin-left: 18px;
+      margin-bottom: 6px;
     }
-    .bubble li { margin-bottom: 4px; }
+    .bubble li { margin-bottom: 2px; }
 
     .bubble blockquote {
       border-left: 3px solid var(--accent-blue);
       background: rgba(59, 130, 246, 0.08);
-      padding: 8px 12px;
-      margin: 8px 0;
-      border-radius: 0 6px 6px 0;
+      padding: 6px 10px;
+      margin: 6px 0;
+      border-radius: 0 4px 4px 0;
       color: #cbd5e1;
     }
     
@@ -300,15 +286,15 @@
     .table-container {
       width: 100%;
       overflow-x: auto;
-      margin: 10px 0;
-      border-radius: 8px;
+      margin: 8px 0;
+      border-radius: 6px;
       border: 1px solid var(--border-subtle);
     }
 
     .bubble table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 13px;
+      font-size: 12.5px;
       text-align: left;
     }
 
@@ -316,14 +302,14 @@
       background: rgba(59, 130, 246, 0.12);
       color: #93c5fd;
       font-weight: 600;
-      padding: 8px 12px;
+      padding: 6px 10px;
       border-bottom: 1px solid var(--border-subtle);
       white-space: nowrap;
     }
 
     .bubble td {
-      padding: 8px 12px;
-      border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+      padding: 6px 10px;
+      border-bottom: 1px solid rgba(51, 65, 85, 0.4);
       color: #cbd5e1;
     }
 
@@ -334,12 +320,12 @@
       display: flex;
       align-items: center;
       gap: 5px;
-      padding: 16px 20px;
+      padding: 12px 16px;
       width: auto !important;
     }
     .dot {
-      width: 6px;
-      height: 6px;
+      width: 5px;
+      height: 5px;
       background: #64748b;
       border-radius: 50%;
       animation: pulse 1.4s infinite ease-in-out both;
@@ -355,67 +341,33 @@
     footer {
       background: var(--bg-panel);
       border-top: 1px solid var(--border-subtle);
-      padding: 14px 24px;
+      padding: 10px 20px;
       flex-shrink: 0;
     }
 
     .footer-inner {
-      max-width: 920px;
+      max-width: 900px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
     }
 
-    .quick-chips {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 10px;
-      overflow-x: auto;
-      padding-bottom: 4px;
-      scrollbar-width: thin;
-    }
-    .quick-chips::-webkit-scrollbar { height: 4px; }
-    .quick-chips::-webkit-scrollbar-thumb {
-      background: var(--border-subtle);
-      border-radius: 4px;
-    }
-    .chip-btn {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      color: #cbd5e1;
-      font-size: 11.5px;
-      font-weight: 500;
-      padding: 5px 12px;
-      border-radius: 9999px;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .chip-btn:hover {
-      background: rgba(59, 130, 246, 0.15);
-      border-color: var(--accent-blue);
-      color: #93c5fd;
-    }
-
-    .input-box { display: flex; gap: 10px; align-items: flex-end; }
+    .input-box { display: flex; gap: 8px; align-items: flex-end; }
 
     textarea {
       flex: 1;
       background: var(--bg-base);
       border: 1px solid var(--border-subtle);
       color: #f8fafc;
-      font-size: 14px;
-      padding: 11px 16px;
-      border-radius: 10px;
+      font-size: 13.5px;
+      padding: 10px 14px;
+      border-radius: 8px;
       outline: none;
       resize: none;
       font-family: inherit;
       line-height: 1.4;
-      min-height: 44px;
-      max-height: 130px;
+      min-height: 42px;
+      max-height: 120px;
       overflow-y: auto;
       box-sizing: border-box;
       transition: height 0.1s ease;
@@ -430,10 +382,10 @@
       background: var(--accent-blue);
       color: #ffffff;
       border: none;
-      border-radius: 10px;
-      padding: 0 24px;
-      height: 44px;
-      font-size: 14px;
+      border-radius: 8px;
+      padding: 0 20px;
+      height: 42px;
+      font-size: 13.5px;
       font-weight: 600;
       cursor: pointer;
       flex-shrink: 0;
@@ -474,30 +426,18 @@
     <div class="msg-row">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS42Xy7NB3R0Xy0MnT5mvmh2ovidQ7lE-tJKl9RDZ8EEchaE3n66Z5b6w&s=10" alt="Ultraman Hensem" class="avatar-img" />
       <div class="bubble ai" id="bubble-welcome">
-        <div class="bubble-header">
-          <span class="bubble-author">Ultraman Hensem</span>
-          <button type="button" class="copy-btn" id="btn-copy-welcome" onclick="copyMessage('welcome')">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-            <span>Copy</span>
-          </button>
-        </div>
-        <div class="bubble-content">
-          <p><strong>Yo bro! Ultraman Hensem is here. 😎</strong></p>
-          <p>Ready to help out with any WTS SOPs, bus schedules, or whatever you need. Ask away, or just drop by for a quick chat!</p>
-        </div>
+        <button type="button" class="copy-btn" id="btn-copy-welcome" onclick="copyMessage('welcome')" title="Copy message">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          <span>Copy</span>
+        </button>
+        <p><strong>Yo bro! Ultraman Hensem is here. 😎</strong></p>
+        <p>Ready to help out with any WTS SOPs, bus schedules, or whatever you need. Ask away, or just drop by for a quick chat!</p>
       </div>
     </div>
   </main>
 
   <footer>
     <div class="footer-inner">
-      <div class="quick-chips">
-        <button type="button" class="chip-btn" onclick="sendQuickPrompt('What is the Genting coach departure and return schedule?')">🚌 Genting Schedule</button>
-        <button type="button" class="chip-btn" onclick="sendQuickPrompt('What is the policy for coach-only pricing on the general hotline?')">🎫 Coach Pricing SOP</button>
-        <button type="button" class="chip-btn" onclick="sendQuickPrompt('Who is exempted from submitting MDAC when entering Malaysia?')">🛂 MDAC Exemption</button>
-        <button type="button" class="chip-btn" onclick="sendQuickPrompt('How do we calculate Genting room upgrades and extensions?')">🏨 Room Upgrade Formulas</button>
-        <button type="button" class="chip-btn" onclick="sendQuickPrompt('What is the mandatory 4W1H information to collect for customer complaints?')">⚠️ Complaint 4W1H</button>
-      </div>
       <div class="input-box">
         <textarea id="userInput" rows="1" placeholder="Connecting knowledge base..." disabled onkeydown="handleKey(event)" oninput="autoResizeTextarea(this)"></textarea>
         <button type="button" class="send-btn" id="sendBtn" disabled onclick="sendMessage()">Send</button>
@@ -601,10 +541,9 @@ MASTER KNOWLEDGE BASE:
     }
 
     async function tryFetchKB() {
-      // Check preloaded KB from parent window first
       if (window.PRELOADED_KB && window.PRELOADED_KB.trim().length > 100) {
         const text = window.PRELOADED_KB;
-        window.PRELOADED_KB = null; // consume once
+        window.PRELOADED_KB = null;
         return text;
       }
 
@@ -703,17 +642,12 @@ MASTER KNOWLEDGE BASE:
         <div class="msg-row">
           <img src="${AVATAR_URL}" alt="Ultraman Hensem" class="avatar-img" />
           <div class="bubble ai" id="bubble-welcome">
-            <div class="bubble-header">
-              <span class="bubble-author">Ultraman Hensem</span>
-              <button type="button" class="copy-btn" id="btn-copy-welcome" onclick="copyMessage('welcome')">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                <span>Copy</span>
-              </button>
-            </div>
-            <div class="bubble-content">
-              <p><strong>Chat reset! Screen is clean now, bro. 🧹✨</strong></p>
-              <p>Ready to help out with any WTS SOPs, bus schedules, or whatever you need. Ask away, or just drop by for a quick chat!</p>
-            </div>
+            <button type="button" class="copy-btn" id="btn-copy-welcome" onclick="copyMessage('welcome')" title="Copy message">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span>Copy</span>
+            </button>
+            <p><strong>Chat reset! Screen is clean now, bro. 🧹✨</strong></p>
+            <p>Ready to help out with any WTS SOPs, bus schedules, or whatever you need. Ask away, or just drop by for a quick chat!</p>
           </div>
         </div>
       `;
@@ -725,15 +659,7 @@ MASTER KNOWLEDGE BASE:
 
     function autoResizeTextarea(el) {
       el.style.height = 'auto';
-      el.style.height = Math.min(el.scrollHeight, 130) + 'px';
-    }
-
-    function sendQuickPrompt(promptText) {
-      const input = document.getElementById('userInput');
-      if (input.disabled) return;
-      input.value = promptText;
-      autoResizeTextarea(input);
-      sendMessage();
+      el.style.height = Math.min(el.scrollHeight, 120) + 'px';
     }
 
     function handleKey(e) {
@@ -860,7 +786,6 @@ MASTER KNOWLEDGE BASE:
       for (let line of lines) {
         let trimmed = line.trim();
 
-        // Check if line is a table row
         if (trimmed.includes('|') && (trimmed.startsWith('|') || trimmed.endsWith('|') || /^[^|]+(\s*\|\s*[^|]+)+$/.test(trimmed))) {
           if (inUl) { html += '</ul>'; inUl = false; }
           if (inOl) { html += '</ol>'; inOl = false; }
@@ -943,7 +868,6 @@ MASTER KNOWLEDGE BASE:
       chatHistory.push({ role: "user", parts: [{ text }] });
 
       try {
-        // Sliding history window for token efficiency and high speed
         const historyPayload = chatHistory.slice(-MAX_HISTORY_TURNS);
         let response = await callGemini(PRIMARY_MODEL, historyPayload);
 
@@ -963,7 +887,6 @@ MASTER KNOWLEDGE BASE:
           appendMsg('ai', cleanReply);
           chatHistory.push({ role: "model", parts: [{ text: cleanReply }] });
 
-          // Keep in-memory chatHistory bounded
           if (chatHistory.length > 30) {
             chatHistory = chatHistory.slice(-20);
           }
@@ -993,13 +916,10 @@ MASTER KNOWLEDGE BASE:
         row.innerHTML = `
           <img src="${AVATAR_URL}" alt="Ultraman Hensem" class="avatar-img" />
           <div class="bubble ai" id="bubble-${msgId}">
-            <div class="bubble-header">
-              <span class="bubble-author">Ultraman Hensem</span>
-              <button type="button" class="copy-btn" id="btn-copy-${msgId}" onclick="copyMessage('${msgId}')">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                <span>Copy</span>
-              </button>
-            </div>
+            <button type="button" class="copy-btn" id="btn-copy-${msgId}" onclick="copyMessage('${msgId}')" title="Copy message">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span>Copy</span>
+            </button>
             <div class="bubble-content">${simpleMarkdown(text)}</div>
           </div>
         `;
