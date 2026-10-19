@@ -270,6 +270,16 @@
 * Low-Cost Carriers (Scoot, AirAsia) per passenger:
   * Any amount: Add flat SGD $25 markup
 
+### Coach Seating, Grouping & Seat Selection Policy
+* Same Coach Guarantee: Only guaranteed if booked under the same invoice (identical travel date, pickup point, and drop-off point).
+* Separate Invoices: Cannot guarantee same coach; submit as a request only.
+* Seat Selection & Allocation Rules:
+  - 21-Seater Coaches (Genting Packages) & Special Departure Packages (Easybook): Customers may be able to select their seats or check availability directly during the booking process.
+  - All Other Coach Types: Advance seat selection is strictly NOT available. Seats are assigned on the departure day during the check-in and boarding process by the bus captain.
+* Seating Preference Requests:
+  - Customers may indicate seating preferences (e.g., front row, middle row).
+  - Requests can be noted and submitted to the operations team, but are strictly NOT guaranteed and will be fulfilled strictly subject to availability.
+
 ---
 
 ## 5. COACH, ROUTE & SYSTEM CODES
