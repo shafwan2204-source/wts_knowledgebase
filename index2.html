@@ -36,7 +36,7 @@
     header {
       background: var(--bg-panel);
       border-bottom: 1px solid var(--border-subtle);
-      padding: 12px 24px;
+      padding: 14px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -128,13 +128,12 @@
       font-size: 11px;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.2s;
     }
-
     .reset-btn:hover {
       background: rgba(244, 63, 94, 0.15);
       color: #fda4af;
-      border-color: rgba(244, 63, 94, 0.3);
+      border-color: rgba(244, 63, 94, 0.4);
     }
 
     #chatBox {
@@ -188,15 +187,14 @@
       flex-shrink: 0;
     }
 
-    /* Fixed spacing: normal whitespace instead of pre-wrap to eliminate empty vertical gaps */
     .bubble {
       padding: 14px 18px;
       font-size: 14px;
-      line-height: 1.5;
+      line-height: 1.6;
       max-width: 82%;
       border-radius: 12px;
       word-break: break-word;
-      white-space: normal;
+      white-space: pre-wrap;
     }
 
     .bubble.ai {
@@ -212,12 +210,8 @@
       border-top-right-radius: 2px;
     }
 
-    .bubble p {
-      margin-bottom: 6px;
-    }
-    .bubble p:last-child {
-      margin-bottom: 0;
-    }
+    .bubble p { margin-bottom: 8px; }
+    .bubble p:last-child { margin-bottom: 0; }
     .bubble strong { color: #f8fafc; font-weight: 600; }
     .bubble em { color: #93c5fd; }
     .bubble ul { margin-left: 20px; margin-bottom: 8px; }
@@ -315,7 +309,7 @@
     </div>
     <div class="header-badges">
       <div class="status-badge neutral" id="lastSyncBadge">
-        <span>🕒 Synced: Connecting...</span>
+        <span>🕒 Synced: --:--:--</span>
       </div>
       <div class="status-badge amber" id="kbBadge">
         <div class="status-dot"></div>
@@ -332,7 +326,10 @@
   <main id="chatBox">
     <div class="msg-row">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS42Xy7NB3R0Xy0MnT5mvmh2ovidQ7lE-tJKl9RDZ8EEchaE3n66Z5b6w&s=10" alt="Ultraman Hensem" class="avatar-img" />
-      <div class="bubble ai"><p><strong>Yo bro! Ultraman Hensem is here. 😎</strong></p><p>Ready to help out with any WTS SOPs, bus schedules, or whatever you need. Ask away, or just drop by for a quick chat!</p></div>
+      <div class="bubble ai">
+        <p><strong>Yo bro! Ultraman Hensem is here. 😎</strong></p>
+        <p>Ready to help out with any WTS SOPs, bus schedules, or whatever you need. Ask away, or just drop by for a quick chat!</p>
+      </div>
     </div>
   </main>
 
@@ -352,10 +349,6 @@
     const PRIMARY_MODEL = "gemini-3.5-flash-lite";
     const FALLBACK_MODEL = "gemini-3.8-flash";
 
-    function getEndpoint(model) {
-      return `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`;
-    }
-
     const PERSONA_HEADER = `SYSTEM INSTRUCTION: DUAL-MODE PERSONA (WORK KNOWLEDGE VS CASUAL BUDDY)
 
 IDENTITY:
@@ -369,10 +362,6 @@ CONDITION A: WORK-RELATED QUERY (HIGH CONFIDENCE: 80 TO 100 PERCENT)
 - Source of Truth: Answer strictly and accurately using the MASTER KNOWLEDGE BASE below.
 - Tone: Professional, clear, concise, and structured (Call Centre / Customer Support Lead standard).
 - Rules: Never guess or extrapolate policies, contacts, or pricing rules. Follow operational directives strictly (such as coach pricing stop notice, complaint workflows, TBF collection steps). Use bullet points and clean formatting.
-- MANDATORY AGENT VERIFICATION DIRECTIVE:
-  Agents must never blindly trust AI-generated answers and must always maintain a healthy doubt. If the agent has any significant doubt, suspicion of inaccuracy, or encounters an unlisted scenario, instruct them to stop and clarify with their Team Lead before committing to or confirming with the customer.
-- FOOTER REMINDER: When answering operational work queries, always append this exact warning footer at the very end of your response:
-  "⚠️ *Note to Agent: Always review and doubt AI-generated information. If you have any significant doubt, please clarify directly with your Team Lead before committing to the customer.*"
 
 CONDITION B: NON-WORK RELATED QUERY
 - Persona: Close friend / bro / kawan (as Ultraman Hensem).
@@ -386,7 +375,7 @@ CONDITION B: NON-WORK RELATED QUERY
 
 3. MIXED QUERIES (CASUAL PLUS WORK):
 - Acknowledge casually in 1 short line (e.g. "Aduh bro, Ultraman Hensem setelkan! Here are the details:").
-- Transition immediately into the professional, accurate work answer based on the knowledge base, ending with the agent verification note.
+- Transition immediately into the professional, accurate work answer based on the knowledge base.
 
 ================================================================================
 MASTER KNOWLEDGE BASE:
@@ -398,8 +387,6 @@ MASTER KNOWLEDGE BASE:
     let syncTimer = null;
     let chatHistory = [];
 
-    const GITHUB_KB_URL = "https://raw.githubusercontent.com/shafwan2204-source/wts_knowledgebase/refs/heads/main/knowledge_base.txt";
-
     // 1. Handshake Listener: Receive key from desktop wrapper via postMessage
     window.addEventListener('message', (event) => {
       if (event.data && event.data.type === 'SET_KEY' && event.data.apiKey) {
@@ -409,12 +396,12 @@ MASTER KNOWLEDGE BASE:
       }
     });
 
-    // 2. Ask parent frame for key proactively upon launch
+    // 2. Proactively ask parent for key if embedded in iframe
     if (window.parent && window.parent !== window) {
       window.parent.postMessage({ type: 'REQUEST_KEY' }, '*');
     }
 
-    // 3. Fallback poll in case window.GEMINI_API_KEY was injected directly
+    // 3. Fallback poll in case window.GEMINI_API_KEY was set after initial parse
     const keyCheckInterval = setInterval(() => {
       if (!GEMINI_API_KEY && window.GEMINI_API_KEY) {
         GEMINI_API_KEY = window.GEMINI_API_KEY;
@@ -425,24 +412,7 @@ MASTER KNOWLEDGE BASE:
       }
     }, 200);
 
-    function checkReadyState() {
-      const input = document.getElementById('userInput');
-      const btn = document.getElementById('sendBtn');
-      if (GEMINI_API_KEY && kbLoaded) {
-        input.disabled = false;
-        btn.disabled = false;
-        input.placeholder = "Ask Ultraman Hensem anything or chat casually...";
-        input.focus();
-      } else if (!GEMINI_API_KEY) {
-        input.disabled = true;
-        btn.disabled = true;
-        input.placeholder = "Waiting for desktop API handshake...";
-      } else if (!kbLoaded) {
-        input.disabled = true;
-        btn.disabled = true;
-        input.placeholder = "Connecting knowledge base...";
-      }
-    }
+    const TARGET_FILE = "https://raw.githubusercontent.com/shafwan2204-source/wts_knowledgebase/refs/heads/main/knowledge_base.txt";
 
     function updateSyncTimerDisplay() {
       const now = new Date();
@@ -454,14 +424,7 @@ MASTER KNOWLEDGE BASE:
       const controller = new AbortController();
       const id = setTimeout(() => controller.abort(), timeoutMs);
       try {
-        const response = await fetch(url, { 
-          signal: controller.signal, 
-          cache: "no-store",
-          headers: {
-            "Pragma": "no-cache",
-            "Cache-Control": "no-cache, no-store, must-revalidate"
-          }
-        });
+        const response = await fetch(url, { signal: controller.signal, cache: "no-store" });
         clearTimeout(id);
         return response;
       } catch (err) {
@@ -471,26 +434,46 @@ MASTER KNOWLEDGE BASE:
     }
 
     async function tryFetchKB() {
-      const ts = Date.now() + "_" + Math.floor(Math.random() * 1000);
-      const cleanUrl = `${GITHUB_KB_URL}?t=${ts}`;
-      const mirrors = [
-        cleanUrl,
-        `https://api.allorigins.win/raw?url=${encodeURIComponent(cleanUrl)}`,
-        `https://corsproxy.io/?url=${encodeURIComponent(cleanUrl)}`
+      // Check preloaded KB from parent window first
+      if (window.PRELOADED_KB && window.PRELOADED_KB.trim().length > 100) {
+        const text = window.PRELOADED_KB;
+        window.PRELOADED_KB = null; // consume once
+        return text;
+      }
+
+      const endpoints = [
+        `${TARGET_FILE}?t=${Date.now()}`,
+        `https://api.allorigins.win/raw?url=${encodeURIComponent(TARGET_FILE)}`,
+        `https://cdn.jsdelivr.net/gh/shafwan2204-source/wts_knowledgebase@main/knowledge_base.txt?t=${Date.now()}`
       ];
 
-      for (const target of mirrors) {
+      for (const url of endpoints) {
         try {
-          const res = await fetchWithTimeout(target, 4000);
+          const res = await fetchWithTimeout(url, 4000);
           if (res.ok) {
             const text = await res.text();
-            if (text && text.trim().length > 100) return text;
+            if (text && text.trim().length > 100) {
+              return text;
+            }
           }
-        } catch (e) {
-          // Fall through to next mirror
-        }
+        } catch (e) {}
       }
       return null;
+    }
+
+    function checkReadyState() {
+      const input = document.getElementById('userInput');
+      const btn = document.getElementById('sendBtn');
+      if (kbLoaded && GEMINI_API_KEY) {
+        input.disabled = false;
+        btn.disabled = false;
+        input.placeholder = "Ask Ultraman Hensem anything or chat casually...";
+        input.focus();
+      } else if (kbLoaded && !GEMINI_API_KEY) {
+        input.disabled = true;
+        btn.disabled = true;
+        input.placeholder = "Waiting for desktop API handshake...";
+      }
     }
 
     async function syncKnowledgeBase() {
@@ -502,39 +485,29 @@ MASTER KNOWLEDGE BASE:
         kbBadgeText.innerText = "Connecting...";
       }
 
-      // Check if preloaded by wrapper
-      if (!kbLoaded && window.PRELOADED_KB && window.PRELOADED_KB.trim().length > 100) {
-        dynamicSystemPrompt = PERSONA_HEADER + window.PRELOADED_KB;
-        kbLoaded = true;
-        kbBadge.className = "status-badge emerald";
-        kbBadgeText.innerText = "Online";
-        updateSyncTimerDisplay();
-        checkReadyState();
-      }
-
       const fetchedText = await tryFetchKB();
 
       if (fetchedText) {
         dynamicSystemPrompt = PERSONA_HEADER + fetchedText;
         kbLoaded = true;
+
         kbBadge.className = "status-badge emerald";
-        kbBadgeText.innerText = "Online";
+        kbBadgeText.innerText = "Connected";
         updateSyncTimerDisplay();
         checkReadyState();
-        console.log("Knowledge Base updated from GitHub:", fetchedText.substring(0, 80) + "...");
+
+        console.log("Knowledge Base refreshed seamlessly in background.");
         
-        // Auto-refresh seamlessly every 60 seconds without reloading page or wiping chat
         if (syncTimer) clearTimeout(syncTimer);
         syncTimer = setTimeout(syncKnowledgeBase, 60000);
       } else {
         if (!kbLoaded) {
           kbBadge.className = "status-badge rose";
           kbBadgeText.innerText = "Retrying in 3s...";
-          checkReadyState();
           if (syncTimer) clearTimeout(syncTimer);
           syncTimer = setTimeout(syncKnowledgeBase, 3000);
         } else {
-          console.warn("Background auto-refresh failed to fetch; retaining current knowledge base.");
+          console.warn("Background auto-refresh failed to fetch update; retained current knowledge base.");
           if (syncTimer) clearTimeout(syncTimer);
           syncTimer = setTimeout(syncKnowledgeBase, 60000);
         }
@@ -561,7 +534,10 @@ MASTER KNOWLEDGE BASE:
       box.innerHTML = `
         <div class="msg-row">
           <img src="${AVATAR_URL}" alt="Ultraman Hensem" class="avatar-img" />
-          <div class="bubble ai"><p><strong>Chat reset! Screen is clean now, bro. 🧹✨</strong></p><p>Ask me any WTS SOP, bus schedules, or let's start fresh!</p></div>
+          <div class="bubble ai">
+            <p><strong>Chat reset! Screen is clean now, bro. 🧹✨</strong></p>
+            <p>Ready to help out with any WTS SOPs, bus schedules, or whatever you need. Ask away, or just drop by for a quick chat!</p>
+          </div>
         </div>
       `;
       document.getElementById('userInput').value = '';
@@ -631,7 +607,8 @@ MASTER KNOWLEDGE BASE:
       return html;
     }
 
-    async function callGemini(endpoint, history) {
+    async function callGemini(modelName, history) {
+      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${GEMINI_API_KEY}`;
       const controller = new AbortController();
       const timer = setTimeout(() => controller.abort(), 20000);
 
@@ -670,12 +647,12 @@ MASTER KNOWLEDGE BASE:
       chatHistory.push({ role: "user", parts: [{ text }] });
 
       try {
-        let response = await callGemini(getEndpoint(PRIMARY_MODEL), chatHistory);
+        let response = await callGemini(PRIMARY_MODEL, chatHistory);
 
         if (!response.ok) {
           console.warn(`Primary model ${PRIMARY_MODEL} returned ${response.status}. Falling back to: ${FALLBACK_MODEL}`);
           updateBadge("3.8 Flash", true);
-          response = await callGemini(getEndpoint(FALLBACK_MODEL), chatHistory);
+          response = await callGemini(FALLBACK_MODEL, chatHistory);
         } else {
           updateBadge("3.5 Flash-Lite", false);
         }
