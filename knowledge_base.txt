@@ -247,6 +247,24 @@
 * Low-Cost Carriers (Scoot, AirAsia) per passenger[cite: 1, 2]:
   * Any amount: Add flat SGD $25 markup[cite: 1, 2]
 
+### Child Half Twin (CHT) Rooming & Pricing Guide
+* Core Rule: Child Half Twin (CHT) applies when a child shares a standard twin room with 1 Adult, occupying the second adult bed space instead of using an extra rollaway or sharing existing bedding. Therefore, CHT is always paired with 1 Adult Twin.
+* Rooming Scenarios:
+  * Scenario A: 1 Adult + 1 Child (1A1C)
+    * 1 Room: (1 Adult Twin + 1 Child CHT)
+  * Scenario B: 1 Adult + 2 Children (1A2C)
+    * 1 Room: (1 Adult Twin + 1 Child CHT) + 1 Child (CWB or CNB)
+  * Scenario C: 2 Adults + 1 Child (2A1C)
+    * Option 1 (1 Room): (2 Adults Twin + Twin) + 1 Child CWB
+    * Option 2 (2 Rooms): Room 1 (1 Adult Twin + 1 Child CHT) + Room 2 (1 Adult Single)
+  * Scenario D: 2 Adults + 2 Children (2A2C)
+    * Option 1 (1 Room): (2 Adults Twin + Twin) + 1 Child CWB + 1 Child CNB
+    * Option 2 (2 Rooms): Room 1 (1 Adult Twin + 1 Child CHT) + Room 2 (1 Adult Twin + 1 Child CHT)
+* Key Definitions:
+  * CHT: Child Half Twin (occupies 1 standard adult bed slot in a twin room).
+  * CWB: Child With Bed (child in extra bed / rollaway).
+  * CNB: Child No Bed (child sharing existing bed without extra bed).
+
 ---
 
 ## 5. COACH, ROUTE & SYSTEM CODES
