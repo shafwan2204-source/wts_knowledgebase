@@ -314,6 +314,16 @@
 * On-Site Contacts: Ah Leh (+6013-203 8813), Ah Fung (+6012-354 3660).
 * Genting Special Concert (GGM) Quotation Formula: Weekend Rate + Concert Purchase-With-Purchase (PWP) Price (e.g., CASGENMEM Twin $109 + Concert PWP $90 = $199 per pax).
 
+### Concert Package Sold Out SOP
+* **Checking Package Availability & Sold Out Updates**:
+  * Agents must **ALWAYS check Slack first** to see if there is an update regarding a Sold Out concert package before asking leads or supervisors.
+  * *Friendly Warning to Agents*: Check Slack first! If you ask Team Leads about sold out status without checking Slack updates first, expect a tight slap from your Team Lead! ✋💥
+* **Availability Rule**:
+  * If a concert package is **not listed under the Sold Out packages on Slack**, it means it is **still available** (strictly subject to confirmation upon actual booking).
+* **Sold Out Strict Policy**:
+  * If a concert package is declared **Sold Out**, it is strictly **Sold Out**.
+  * No new or additional tickets will be added or opened up unless specifically and officially informed otherwise by the operations team.
+
 ### Genting Package Upgrade Room & Extension Calculation Formulas
 
 #### 1. Twin Cities Non-Genting Member / Room Upgrade Formula
