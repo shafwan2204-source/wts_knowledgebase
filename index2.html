@@ -301,7 +301,58 @@
       color: #cbd5e1;
     }
     
-    .bubble a { color: #60a5fa; text-decoration: underline; word-break: break-all; }
+    /* High-contrast accessible links */
+    a {
+      color: #38bdf8;
+      text-decoration: underline;
+      text-underline-offset: 2.5px;
+      text-decoration-thickness: 1px;
+      word-break: break-all;
+      transition: color 0.15s ease, text-decoration-color 0.15s ease;
+    }
+    a:hover {
+      color: #7dd3fc;
+      text-decoration-color: #7dd3fc;
+    }
+
+    .bubble.ai a {
+      color: #38bdf8;
+      font-weight: 500;
+      text-decoration: underline;
+      text-underline-offset: 2.5px;
+      text-decoration-color: rgba(56, 189, 248, 0.6);
+      word-break: break-all;
+    }
+    .bubble.ai a:hover {
+      color: #bae6fd;
+      text-decoration-color: #bae6fd;
+    }
+
+    .bubble.user a {
+      color: #ffffff;
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 2.5px;
+      text-decoration-color: rgba(255, 255, 255, 0.85);
+      word-break: break-all;
+    }
+    .bubble.user a:hover {
+      color: #fef08a;
+      text-decoration-color: #fef08a;
+    }
+
+    .announcement-body a {
+      color: #fbbf24;
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 2.5px;
+      text-decoration-color: rgba(251, 191, 36, 0.7);
+      word-break: break-all;
+    }
+    .announcement-body a:hover {
+      color: #fef08a;
+      text-decoration-color: #fef08a;
+    }
 
     .table-container {
       width: 100%;
