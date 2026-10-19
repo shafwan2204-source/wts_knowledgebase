@@ -540,3 +540,42 @@
 * New Zealand: English speaking tour guide.
 * Bhutan: English speaking tour guide.
 * Nepal: English speaking guide.
+
+---
+
+## 10. MALAYSIA ENTRY REQUIREMENTS & IMMIGRATION (MDAC)
+
+### Overview
+* The **Malaysia Digital Arrival Card (MDAC)** is a mandatory online pre-arrival form required by the Malaysian Immigration Department for most foreign travellers entering Malaysia.
+* **Submission Window**: Must be submitted online within **3 days prior to arrival** in Malaysia.
+* **Cost**: MDAC submission is **100% FREE OF CHARGE**.
+* **Passport Validity**: Travellers must possess a valid passport with at least **6 months validity**.
+
+### Who Needs to Apply for MDAC?
+* **All foreign nationals** entering Malaysia via:
+  * **Air** (Flights)
+  * **Land** (Coaches, buses, private cars via checkpoints)
+  * **Sea** (Cruises, ferries)
+* Must complete and submit the MDAC online before arriving at Malaysian border checkpoints.
+
+### Who is EXEMPTED from MDAC? (Does NOT need to apply)
+The following travellers are strictly exempted from submitting the MDAC:
+1. **Malaysian Citizens**
+2. **Malaysian Permanent Residents (PR)**
+3. **Singapore Citizens**
+4. **Holders of Malaysian Long-Term Passes**:
+   * Employment Pass
+   * Student Pass
+   * Dependant Pass
+   * Residence Pass, etc.
+5. **Diplomatic & Official Passport Holders**
+6. **Brunei General Certificate of Identity (GCI) Holders**
+7. **Brunei-Malaysia Frequent Traveller Facility Holders**
+8. **Thailand Border Pass Holders**
+9. **Indonesian Cross-Border Pass (PLB) Holders**
+
+### Official Portal & Anti-Scam Warning
+* **Official Submission Portal**: https://imigresen-online.imi.gov.my/mdac/
+* **Crucial Scam Advisory for Agents**:
+  * Advise customers to **ONLY** use the official Malaysian Immigration website above.
+  * Warn customers against third-party scam/phishing websites that charge unnecessary application or processing fees. MDAC is completely free.
