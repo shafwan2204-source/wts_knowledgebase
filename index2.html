@@ -615,6 +615,9 @@
     const FALLBACK_MODEL = "gemini-3.8-flash";
     const MAX_HISTORY_TURNS = 10; // Sliding window: keep last 10 messages for prompt efficiency
 
+    // Webhook for logging enquiries to Google Sheets (Replace with your deployed Web App URL)
+    const LOG_ENDPOINT = "";
+
     const PERSONA_HEADER = `SYSTEM INSTRUCTION: ULTRAMAN HENSEM (WTS TRAVEL OPS ASSISTANT)
 
 IDENTITY:
@@ -1092,11 +1095,13 @@ MASTER KNOWLEDGE BASE:
 
       try {
         const historyPayload = chatHistory.slice(-MAX_HISTORY_TURNS);
+        let usedModel = PRIMARY_MODEL;
         let response = await callGemini(PRIMARY_MODEL, historyPayload);
 
         if (!response.ok) {
           console.warn(`Primary model ${PRIMARY_MODEL} returned ${response.status}. Falling back to: ${FALLBACK_MODEL}`);
           updateBadge("3.8 Flash", true);
+          usedModel = FALLBACK_MODEL;
           response = await callGemini(FALLBACK_MODEL, historyPayload);
         } else {
           updateBadge("3.5 Flash-Lite", false);
@@ -1109,6 +1114,9 @@ MASTER KNOWLEDGE BASE:
           const cleanReply = cleanCitations(rawReply);
           appendMsg('ai', cleanReply);
           chatHistory.push({ role: "model", parts: [{ text: cleanReply }] });
+
+          // Non-blocking background log to Google Sheet
+          logEnquiry(text, cleanReply, usedModel);
 
           if (chatHistory.length > 30) {
             chatHistory = chatHistory.slice(-20);
@@ -1124,6 +1132,31 @@ MASTER KNOWLEDGE BASE:
         input.disabled = false;
         document.getElementById('sendBtn').disabled = false;
         input.focus();
+      }
+    }
+
+    function logEnquiry(question, responseText, modelName) {
+      if (!LOG_ENDPOINT || LOG_ENDPOINT.trim() === "" || LOG_ENDPOINT.includes("PASTE_YOUR_APPS_SCRIPT_URL_HERE")) return;
+      try {
+        const payload = {
+          timestamp: new Date().toLocaleString("en-SG", { timeZone: "Asia/Singapore" }),
+          question: question,
+          response: responseText,
+          model: modelName,
+          length: responseText ? responseText.length : 0
+        };
+
+        // Fire-and-forget simple POST with text/plain to avoid CORS preflight issues with Google Apps Script
+        fetch(LOG_ENDPOINT, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain" },
+          body: JSON.stringify(payload)
+        }).catch(err => {
+          console.warn("Background sheet log warning:", err);
+        });
+      } catch (e) {
+        console.warn("Background sheet log exception:", e);
       }
     }
 
