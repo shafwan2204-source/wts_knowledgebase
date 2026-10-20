@@ -127,6 +127,135 @@
       cursor: pointer;
       transition: all 0.2s;
     }
+        .header-btn {
+      background: var(--bg-surface);
+      color: #cbd5e1;
+      border: 1px solid var(--border-subtle);
+      padding: 3px 8px;
+      border-radius: 5px;
+      font-size: 10.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .header-btn:hover {
+      background: rgba(59, 130, 246, 0.15);
+      color: #93c5fd;
+      border-color: var(--accent-blue);
+    }
+    .header-btn.active {
+      background: rgba(59, 130, 246, 0.25);
+      color: #60a5fa;
+      border-color: var(--accent-blue);
+    }
+
+    /* Comfortable text density */
+    body.density-comfortable .bubble {
+      font-size: 14.5px;
+      line-height: 1.5;
+      padding: 8px 40px 8px 12px;
+    }
+    body.density-comfortable .bubble.user {
+      padding-right: 12px;
+    }
+    body.density-comfortable textarea {
+      font-size: 14px;
+    }
+
+    /* Search bar */
+    .search-bar {
+      background: var(--bg-panel);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 6px 16px;
+      flex-shrink: 0;
+    }
+    .search-bar-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .search-icon {
+      font-size: 12px;
+      opacity: 0.7;
+    }
+    #chatSearchInput {
+      flex: 1;
+      background: var(--bg-base);
+      border: 1px solid var(--border-subtle);
+      color: #f8fafc;
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      outline: none;
+    }
+    #chatSearchInput:focus {
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+    }
+    .search-count {
+      font-size: 11px;
+      color: var(--text-muted);
+      min-width: 32px;
+      text-align: center;
+    }
+    .search-nav-btn, .search-close-btn {
+      background: var(--bg-surface);
+      color: #cbd5e1;
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-size: 10px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .search-nav-btn:hover, .search-close-btn:hover {
+      background: var(--bg-surface-hover);
+      color: #ffffff;
+    }
+    .search-highlight {
+      background: rgba(245, 158, 11, 0.45);
+      color: #ffffff;
+      padding: 1px 2px;
+      border-radius: 2px;
+    }
+    .search-highlight.active {
+      background: #f59e0b;
+      color: #000000;
+      font-weight: 700;
+    }
+
+    /* Error Bubble & Retry */
+    .bubble.ai.error {
+      border-color: rgba(244, 63, 94, 0.4);
+      background: rgba(244, 63, 94, 0.08);
+      color: #fecdd3;
+    }
+    .retry-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 6px;
+      background: rgba(244, 63, 94, 0.18);
+      border: 1px solid rgba(244, 63, 94, 0.4);
+      color: #fda4af;
+      padding: 3px 9px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .retry-btn:hover {
+      background: rgba(244, 63, 94, 0.3);
+      color: #ffffff;
+      border-color: rgba(244, 63, 94, 0.6);
+    }
+
     .reset-btn:hover {
       background: rgba(244, 63, 94, 0.15);
       color: #fda4af;
@@ -573,9 +702,22 @@
         <div class="status-dot"></div>
         <span id="badgeText">3.5 Flash-Lite</span>
       </div>
-      <button class="reset-btn" type="button" onclick="resetChat()">↺ Reset Chat</button>
+      <button class="header-btn" type="button" id="searchToggleBtn" onclick="toggleSearch()" title="Search conversation (Ctrl+F)">🔍 Find</button>
+      <button class="header-btn" type="button" id="fontSizeBtn" onclick="toggleFontSize()" title="Toggle text size (Compact / Comfortable)">Aa</button>
+      <button class="reset-btn" type="button" onclick="resetChat()" title="Clear chat history">↺ Reset Chat</button>
     </div>
   </header>
+
+  <div id="chatSearchBar" class="search-bar" style="display: none;">
+    <div class="search-bar-inner">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="chatSearchInput" placeholder="Find in current chat (Enter: next, Shift+Enter: prev, Esc: close)..." oninput="handleSearch()" onkeydown="handleSearchKey(event)" />
+      <span id="searchMatchCount" class="search-count">0/0</span>
+      <button type="button" class="search-nav-btn" onclick="navSearch(-1)" title="Previous match (Shift+Enter)">▲</button>
+      <button type="button" class="search-nav-btn" onclick="navSearch(1)" title="Next match (Enter)">▼</button>
+      <button type="button" class="search-close-btn" onclick="closeSearch()" title="Close search (Esc)">✕</button>
+    </div>
+  </div>
 
   <div id="announcementBanner" class="announcement-bar" style="display: none;">
     <div class="announcement-wrap">
@@ -848,7 +990,11 @@ MASTER KNOWLEDGE BASE:
       }
     }
 
-    window.addEventListener("DOMContentLoaded", syncKnowledgeBase);
+    window.addEventListener("DOMContentLoaded", () => {
+      syncKnowledgeBase();
+      initDraftAutoSave();
+      applyDensity(currentDensity);
+    });
 
     function updateBadge(modelName, isFallback = false) {
       const badge = document.getElementById('engineBadge');
@@ -1078,15 +1224,16 @@ MASTER KNOWLEDGE BASE:
       }
     }
 
-    async function sendMessage() {
+    async function sendMessage(manualText = null) {
       const input = document.getElementById('userInput');
-      const text = input.value.trim();
+      const text = manualText !== null ? manualText.trim() : input.value.trim();
       if (!text || !kbLoaded || !GEMINI_API_KEY) return;
 
       input.value = '';
       input.style.height = 'auto';
       input.disabled = true;
       document.getElementById('sendBtn').disabled = true;
+      localStorage.removeItem('wts_draft_query'); // Clear draft upon send
 
       appendMsg('user', text);
       const typingId = showTyping();
@@ -1118,16 +1265,19 @@ MASTER KNOWLEDGE BASE:
           // Non-blocking background log to Google Sheet
           logEnquiry(text, cleanReply, usedModel);
 
+          // Alert agent if tab is currently in the background
+          triggerBackgroundAlert();
+
           if (chatHistory.length > 30) {
             chatHistory = chatHistory.slice(-20);
           }
         } else {
           const err = response.data?.error?.message || response.error?.message || "Service error. Please try again.";
-          appendMsg('ai', `⚠️ **Service Alert:** ${err}`);
+          appendErrorMsg(err, text);
         }
       } catch (err) {
         removeTyping(typingId);
-        appendMsg('ai', `⚠️ **Connection error:** ${err.message || 'Check network connection.'}`);
+        appendErrorMsg(err.message || 'Check network connection.', text);
       } finally {
         input.disabled = false;
         document.getElementById('sendBtn').disabled = false;
@@ -1212,6 +1362,290 @@ MASTER KNOWLEDGE BASE:
       const el = document.getElementById(id);
       if (el) el.remove();
     }
+
+    /* --- AGENDA 3 & 4 OPERATIONAL ADD-ONS --- */
+
+    // 1. Text Density / Font Size Toggle
+    let currentDensity = localStorage.getItem('wts_font_density') || 'compact';
+
+    function applyDensity(density) {
+      currentDensity = density;
+      localStorage.setItem('wts_font_density', density);
+      const btn = document.getElementById('fontSizeBtn');
+      if (density === 'comfortable') {
+        document.body.classList.add('density-comfortable');
+        if (btn) {
+          btn.classList.add('active');
+          btn.title = "Text size: Comfortable (Click for Compact)";
+        }
+      } else {
+        document.body.classList.remove('density-comfortable');
+        if (btn) {
+          btn.classList.remove('active');
+          btn.title = "Text size: Compact (Click for Comfortable)";
+        }
+      }
+    }
+
+    function toggleFontSize() {
+      const next = currentDensity === 'compact' ? 'comfortable' : 'compact';
+      applyDensity(next);
+    }
+
+    // 2. Draft Auto-Save
+    function initDraftAutoSave() {
+      const input = document.getElementById('userInput');
+      if (!input) return;
+
+      const savedDraft = localStorage.getItem('wts_draft_query');
+      if (savedDraft && savedDraft.trim().length > 0 && !input.value) {
+        input.value = savedDraft;
+        autoResizeTextarea(input);
+      }
+
+      input.addEventListener('input', () => {
+        if (input.value && input.value.trim().length > 0) {
+          localStorage.setItem('wts_draft_query', input.value);
+        } else {
+          localStorage.removeItem('wts_draft_query');
+        }
+      });
+    }
+
+    // 3. Background Tab Alert (Title Flash + Gentle Web Audio Chime)
+    const ORIGINAL_TITLE = document.title || "Ultraman Hensem - WTS Travel Ops AI";
+    let titleFlashTimer = null;
+
+    function playNotificationChime() {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        const ctx = new AudioCtx();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5 note
+        osc.frequency.setValueAtTime(880, ctx.currentTime + 0.09); // A5 note
+        gain.gain.setValueAtTime(0.08, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.3);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.3);
+      } catch (e) {}
+    }
+
+    function triggerBackgroundAlert() {
+      if (!document.hidden) return; // Only notify if tab is in background
+
+      playNotificationChime();
+
+      if (titleFlashTimer) clearInterval(titleFlashTimer);
+      let isAlert = true;
+      titleFlashTimer = setInterval(() => {
+        if (!document.hidden) {
+          clearBackgroundAlert();
+          return;
+        }
+        document.title = isAlert ? "🔔 (1) Answer Ready - Ultraman Hensem" : ORIGINAL_TITLE;
+        isAlert = !isAlert;
+      }, 1000);
+    }
+
+    function clearBackgroundAlert() {
+      if (titleFlashTimer) {
+        clearInterval(titleFlashTimer);
+        titleFlashTimer = null;
+      }
+      document.title = ORIGINAL_TITLE;
+    }
+
+    window.addEventListener('focus', clearBackgroundAlert);
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) clearBackgroundAlert();
+    });
+
+    // 4. In-Chat Search (Ctrl+F)
+    let searchMatches = [];
+    let currentSearchIndex = -1;
+
+    function toggleSearch() {
+      const bar = document.getElementById('chatSearchBar');
+      const input = document.getElementById('chatSearchInput');
+      const btn = document.getElementById('searchToggleBtn');
+      if (!bar) return;
+
+      if (bar.style.display === 'none' || !bar.style.display) {
+        bar.style.display = 'block';
+        if (btn) btn.classList.add('active');
+        if (input) {
+          input.focus();
+          input.select();
+        }
+        handleSearch();
+      } else {
+        closeSearch();
+      }
+    }
+
+    function closeSearch() {
+      const bar = document.getElementById('chatSearchBar');
+      const btn = document.getElementById('searchToggleBtn');
+      if (bar) bar.style.display = 'none';
+      if (btn) btn.classList.remove('active');
+      clearSearchHighlights();
+      searchMatches = [];
+      currentSearchIndex = -1;
+      updateSearchCountUI();
+      const userInput = document.getElementById('userInput');
+      if (userInput && !userInput.disabled) userInput.focus();
+    }
+
+    function clearSearchHighlights() {
+      const highlighted = document.querySelectorAll('.search-highlight');
+      highlighted.forEach(el => {
+        const parent = el.parentNode;
+        if (parent) {
+          parent.replaceChild(document.createTextNode(el.textContent), el);
+          parent.normalize();
+        }
+      });
+    }
+
+    function handleSearchKey(e) {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closeSearch();
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        navSearch(e.shiftKey ? -1 : 1);
+      }
+    }
+
+    function handleSearch() {
+      clearSearchHighlights();
+      searchMatches = [];
+      currentSearchIndex = -1;
+
+      const input = document.getElementById('chatSearchInput');
+      const query = input ? input.value.trim() : '';
+      if (!query || query.length < 2) {
+        updateSearchCountUI();
+        return;
+      }
+
+      const bubbles = document.querySelectorAll('.bubble-content, .bubble.user');
+      bubbles.forEach(container => {
+        highlightTextNodes(container, query);
+      });
+
+      searchMatches = Array.from(document.querySelectorAll('.search-highlight'));
+      if (searchMatches.length > 0) {
+        currentSearchIndex = 0;
+        highlightCurrentMatch();
+      }
+      updateSearchCountUI();
+    }
+
+    function highlightTextNodes(node, query) {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const text = node.textContent;
+        const lower = text.toLowerCase();
+        const qLower = query.toLowerCase();
+        const idx = lower.indexOf(qLower);
+        if (idx !== -1) {
+          const before = text.substring(0, idx);
+          const match = text.substring(idx, idx + query.length);
+          const after = text.substring(idx + query.length);
+
+          const span = document.createElement('mark');
+          span.className = 'search-highlight';
+          span.textContent = match;
+
+          const parent = node.parentNode;
+          if (before) parent.insertBefore(document.createTextNode(before), node);
+          parent.insertBefore(span, node);
+          if (after) {
+            const afterNode = document.createTextNode(after);
+            parent.insertBefore(afterNode, node);
+            highlightTextNodes(afterNode, query);
+          }
+          parent.removeChild(node);
+        }
+      } else if (node.nodeType === Node.ELEMENT_NODE && !node.classList.contains('copy-btn') && !node.classList.contains('retry-btn')) {
+        Array.from(node.childNodes).forEach(child => highlightTextNodes(child, query));
+      }
+    }
+
+    function navSearch(direction) {
+      if (searchMatches.length === 0) return;
+      currentSearchIndex += direction;
+      if (currentSearchIndex >= searchMatches.length) currentSearchIndex = 0;
+      if (currentSearchIndex < 0) currentSearchIndex = searchMatches.length - 1;
+      highlightCurrentMatch();
+      updateSearchCountUI();
+    }
+
+    function highlightCurrentMatch() {
+      searchMatches.forEach((m, i) => {
+        if (i === currentSearchIndex) {
+          m.classList.add('active');
+          m.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          m.classList.remove('active');
+        }
+      });
+    }
+
+    function updateSearchCountUI() {
+      const el = document.getElementById('searchMatchCount');
+      if (!el) return;
+      if (searchMatches.length === 0) {
+        el.textContent = "0/0";
+      } else {
+        el.textContent = `${currentSearchIndex + 1}/${searchMatches.length}`;
+      }
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'f') {
+        e.preventDefault();
+        toggleSearch();
+      }
+    });
+
+    // 5. 1-Click Inline Retry on Failed Requests
+    function appendErrorMsg(err, failedQuery) {
+      const box = document.getElementById('chatBox');
+      const row = document.createElement('div');
+      row.className = 'msg-row';
+      const msgId = 'err-' + Date.now();
+      row.id = msgId;
+
+      row.innerHTML = `
+        <img src="${AVATAR_URL}" alt="Ultraman Hensem" class="avatar-img" />
+        <div class="bubble ai error">
+          <div class="bubble-content">⚠️ <strong>Service Alert:</strong> ${err}</div>
+          <button type="button" class="retry-btn" onclick="retryQuery('${encodeURIComponent(failedQuery)}', '${msgId}')">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"></path><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+            <span>Retry Question</span>
+          </button>
+        </div>
+      `;
+      box.appendChild(row);
+      box.scrollTop = box.scrollHeight;
+    }
+
+    function retryQuery(encodedQuery, errRowId) {
+      const errRow = document.getElementById(errRowId);
+      if (errRow) errRow.remove();
+      const query = decodeURIComponent(encodedQuery);
+      if (chatHistory.length > 0 && chatHistory[chatHistory.length - 1].role === 'user') {
+        chatHistory.pop();
+      }
+      sendMessage(query);
+    }
   </script>
+
 </body>
 </html>
