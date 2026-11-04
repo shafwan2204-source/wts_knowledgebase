@@ -534,9 +534,12 @@
 ### Cruise Routing Details
 * Disney Cruise Adventure: Cruise to nowhere (operates exclusively in South China Sea).
 
-### Helper / Foreign Passport Visa Rules (Myanmar Passport)
-* Royal Caribbean: To Malaysia (No visa required); To Thailand (Visa REQUIRED, No Visa on Arrival allowed).
-* Genting Dream: To Malaysia (No visa required); To Thailand (Visa REQUIRED, No Visa on Arrival allowed).
+### Foreign Passport & Visa Requirements on Cruises
+* Myanmar Passport (Domestic Helpers / Foreign Passports):
+  * Royal Caribbean: To Malaysia (No visa required); To Thailand (Visa REQUIRED, No Visa on Arrival allowed).
+  * Genting Dream: To Malaysia (No visa required); To Thailand (Visa REQUIRED, No Visa on Arrival allowed).
+* Stateless Passport / Document of Identity (Certificate of Identity):
+  * Genting Dream / Dream Cruises (Phuket Cruise): Passengers travelling on a Stateless passport or Document of Identity (DOI/COI) strictly REQUIRE a valid entry VISA for Thailand before departure. Boarding will be denied without an approved visa.
 ### Genting Dream (GDR) Fuel Surcharge Notice
 * Fuel Surcharge of SGD 10 per guest, per night (applicable to guests aged 2 years and above) will apply.
 * The total fuel surcharge will be automatically added to the guest's onboard account for settlement prior to disembarkation.
