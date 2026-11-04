@@ -261,6 +261,13 @@
 * Batam Fuel Surcharge:
   - Departure from Singapore (HarbourFront / Tanah Merah): SGD 6.00 per passenger (pay during at ferry terminal)
   - Departure from Batam (Batam Centre / Sekupang / Tanjung Pinang): IDR 65,000 per passenger (pay during at ferry terminal)
+### Batam & Bintan Land Transfers Policy
+* Transfer Type: Seat-in-Coach (SIC) / Shared Vehicle.
+* Operations: Land transfers for Batam and Bintan hotel and tour packages (e.g., transfers between the ferry terminal and resort/hotel) are operated as shared vehicle services (SIC) by destination land operators or resort shuttles.
+* Private Transfer Requests: Standard packages do not include private transport; any request for private vehicle transfers must be quoted and arranged separately as a private charter.
+### Malaysian Tourism Tax (TTx) Policy for Hotel Bookings
+* Malaysian Citizens: Exempted from Malaysian Tourism Tax (TTx). Malaysian customers travelling from Singapore who book hotels in Malaysia do NOT need to pay tourism tax (upon presenting their Malaysian MyKad / passport at hotel check-in).
+* Foreign Tourists: Non-Malaysian passport holders are subject to the standard Malaysian Tourism Tax (flat RM10 per room per night, payable directly to the hotel at check-in/check-out unless explicitly bundled in specific tour packages).
 
 ### Coach Fares, Estimates & General Hotline Policy
 * 2-Way Coach Price: Always quote bundled 2-way fare only (included fuel surcharge). Do not split departure vs. return unless customer specifically insists.
