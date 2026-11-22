@@ -553,7 +553,7 @@
 * Fuel Surcharge of SGD 10 per guest, per night (applicable to guests aged 2 years and above) will apply.
 * The total fuel surcharge will be automatically added to the guest's onboard account for settlement prior to disembarkation.
 ### Promotional Rate Eligibility (StarDream Cruises)
-* **Residency / Pass Requirement:** StarDream Cruise promotional rates are strictly applicable **only** to **Singapore Citizens** and **foreigners holding a valid Singapore Permanent Resident (PR), Work Permit, or Long-Term Visit Pass (LTVP)**.
+* **Residency / Pass Requirement:** StarDream Cruise promotional rates are strictly applicable **only** to **Singapore Citizens** and **foreigners holding a valid Singapore Permanent Resident (PR), Work Permit (including Employment Pass / EP), or Long-Term Visit Pass (LTVP)**.
 * **Validity:** Promotional rates are subject to availability and are **only applicable while the promo lasts**.
 
 ---
