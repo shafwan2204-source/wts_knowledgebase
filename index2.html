@@ -519,9 +519,22 @@
     .typing-box {
       display: flex;
       align-items: center;
-      gap: 4px;
-      padding: 8px 12px;
+      gap: 8px;
+      padding: 8px 14px;
       width: auto !important;
+    }
+    .typing-dots {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .typing-text {
+      font-size: 13px;
+      color: #94a3b8;
+      font-style: italic;
+    }
+    .typing-text.fallback {
+      color: #fbbf24;
     }
     .dot {
       width: 4px;
@@ -1250,6 +1263,7 @@ MASTER KNOWLEDGE BASE:
         for (let i = 0; i < MODEL_CHAIN.length; i++) {
             const model = MODEL_CHAIN[i];
           const isFallback = i > 0;
+        if (isFallback) updateTypingText(typingId);
           try {
             const attempt = await callGemini(model.id, historyPayload, model.thinkingLevel);
             if (attempt.ok) {
@@ -1350,7 +1364,32 @@ MASTER KNOWLEDGE BASE:
       box.scrollTop = box.scrollHeight;
     }
 
-    function showTyping() {
+    const PRIMARY_LOADING_PHRASES = [
+      "Searching for my brain...",
+      "Flipping through the WTS manual at supersonic speed...",
+      "Consulting the Ultraman council...",
+      "Brewing teh tarik while I read the SOP...",
+      "Untangling the coach schedules...",
+      "Asking my inner genius... please hold...",
+      "Dusting off the knowledge base...",
+      "Charging my Spacium Beam for this answer..."
+    ];
+
+    const FALLBACK_LOADING_PHRASES = [
+      "Wait, I left my brain at home—fetching it now...",
+      "Plan A took a coffee break, waking up Plan B...",
+      "Oops, wrong pocket! Checking my backup brain...",
+      "Hold on, calling my smarter twin brother...",
+      "Primary brain went to Genting without me—switching to backup!",
+      "Traffic jam at Tuas Checkpoint! Rerouting to backup brain...",
+      "My first brain is buffering... booting up the reserve unit!"
+    ];
+
+    function getRandomPhrase(list) {
+      return list[Math.floor(Math.random() * list.length)];
+    }
+
+        function showTyping() {
       const box = document.getElementById('chatBox');
       const id = 'loader-' + Date.now();
       const row = document.createElement('div');
@@ -1359,9 +1398,12 @@ MASTER KNOWLEDGE BASE:
       row.innerHTML = `
         <img src="${AVATAR_URL}" alt="Ultraman Hensem" class="avatar-img" />
         <div class="bubble ai typing-box">
+          <div class="typing-dots">
           <div class="dot"></div>
           <div class="dot"></div>
           <div class="dot"></div>
+          </div>
+          <span class="typing-text">${getRandomPhrase(PRIMARY_LOADING_PHRASES)}</span>
         </div>
       `;
       box.appendChild(row);
@@ -1369,6 +1411,16 @@ MASTER KNOWLEDGE BASE:
       return id;
     }
 
+    function updateTypingText(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const textEl = el.querySelector('.typing-text');
+      if (textEl) {
+        textEl.textContent = getRandomPhrase(FALLBACK_LOADING_PHRASES);
+        textEl.classList.add('fallback');
+      }
+    }
+    
     function removeTyping(id) {
       const el = document.getElementById(id);
       if (el) el.remove();
