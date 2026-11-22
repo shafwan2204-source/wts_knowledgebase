@@ -261,6 +261,7 @@
 * Batam Fuel Surcharge:
   - Departure from Singapore (HarbourFront / Tanah Merah): SGD 6.00 per passenger (pay during at ferry terminal)
   - Departure from Batam (Batam Centre / Sekupang / Tanjung Pinang): IDR 65,000 per passenger (pay during at ferry terminal)
+* **One-Way vs. Two-Way Bookings:** The full fuel surcharge rate is **still applicable regardless of whether the booking is one-way or two-way**. There is **no reduction or change to the rate** even for one-way-only tickets.
 ### Batam & Bintan Land Transfers Policy
 * Transfer Type: Seat-in-Coach (SIC) / Shared Vehicle.
 * Operations: Land transfers for Batam and Bintan hotel and tour packages (e.g., transfers between the ferry terminal and resort/hotel) are operated as shared vehicle services (SIC) by destination land operators or resort shuttles.
