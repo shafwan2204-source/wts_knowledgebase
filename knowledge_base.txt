@@ -556,6 +556,39 @@
 * **Residency / Pass Requirement:** StarDream Cruise promotional rates are strictly applicable **only** to **Singapore Citizens** and **foreigners holding a valid Singapore Permanent Resident (PR), Work Permit (including Employment Pass / EP), or Long-Term Visit Pass (LTVP)**.
 * **Validity:** Promotional rates are subject to availability and are **only applicable while the promo lasts**.
 
+### Cruise Terms & Conditions by Cruise Line
+
+#### 1. Disney Cruise Line (DCL)
+* **Payment & Currency:** Full payment required at booking to secure reservation. Bookings in SGD; onboard currency is USD. Single-occupancy fares are 200% of double-occupancy package price.
+* **Check-In & Name Accuracy:** Check-in closes **3 hours** prior to scheduled sailing time (late arrivals denied boarding). Names must match passport exactly.
+* **Cancellation Policy (1–5 Nights):** 45+ days prior: 20% per Guest | 44–30 days: 50% per Guest | 29–15 days: 75% per Guest | 14 days or less: No Refund. WTS imposes a **S$50/pax** handling fee for every cancellation.
+* **Amendment Policy:** Partial name change only: **USD 50.00** per amendment & per person (paid in SGD at prevailing exchange rate) + WTS **S$50/pax** handling fee. At least 1 original guest name per cabin must remain unchanged (changing all names = cancellation). Amendments received **7 calendar days or less** prior to departure incur 100% full cabin fare cancellation charge.
+* **Adding Guests:** Subject to approval, real-time availability, and cabin capacity; may require re-pricing entire booking at prevailing rate.
+* **Pregnancy Policy:** Refused passage if entered or entering **24th week** during the cruise; **neither a physician's medical statement nor a waiver of liability will be accepted**; no refund/compensation.
+* **Infant & Minor Policy:** Minimum age **6 months** as of first day of cruise/Cruise Tour. Under 18 must be accompanied by an adult 18+. Minors travelling without a parent/legal guardian require the **Authorization for Minor to Travel without a Parent or Legal Guardian** form completed by parent/guardian, naming each child, presented at port check-in.
+* **Passport Validity:** Minimum **6 months validity** as at the end of the sailing period.
+
+#### 2. Royal Caribbean International
+* **Payment & Currency:** Final payment due at booking (or auto-charged on final payment date if applicable, with no reminder). Bookings in SGD; onboard currency is USD (cross-border credit card fees borne by cardholder; approved transactions cannot be voided).
+* **Check-In & Casino:** Check-in closes **2 hours** prior to scheduled sailing time. On Japan sailings, the casino does not operate between Japanese ports / in Japanese waters.
+* **Cancellation Policy (Non Fly-Cruise):**
+  * 1–5 Nights: 60+ days: SGD 200 | 59–30 days: 50% | 29–15 days: 75% | 14 days or less: No Refund.
+  * 6–9 Nights: 75+ days: SGD 500 | 74–45 days: 50% | 44–15 days: 75% | 14 days or less: No Refund.
+  * 10–14 Nights: 75+ days: SGD 700 | 74–61 days: 50% | 60–31 days: 75% | 30 days or less: No Refund.
+  * 15+ Nights: 61+ days: SGD 700 | 60–41 days: 50% | 40–25 days: 75% | 24 days or less: No Refund.
+  * **Amendments:** Any amendment of reservation is treated as a cancellation (above fees apply on top of new fare). WTS imposes a **S$50/pax** handling fee for every cancellation.
+* **Pregnancy Policy:** Must declare upon booking; **24th week** cutoff; a **physician's Fit to Travel note** is required for all pregnant guests; no refund/compensation if cancelled due to pregnancy.
+* **Infant & Minor Policy:** Minimum **6 months** old (or **12 months** for transatlantic, transpacific, Hawaii, cruises with 2 consecutive sea days, and select South American cruises). Minors aged 17 or under travelling with parents/guardians must be booked in a **physically adjacent stateroom** (next door or directly across the hall). Non-parent/guardian adults travelling with minors must present the child's valid passport/visa (or certified birth certificate) and an **original affirmed or notarized letter** signed by a parent/guardian authorizing travel, supervision, and emergency medical treatment.
+* **Passport & Visa Notes:** 6 months validity as at end of sailing period. SG citizens to USA require ESTA (`https://esta.cbp.dhs.gov`); to Australia require ETA (`www.immi.gov.au`). China passport holders cannot sail on itineraries with 2 consecutive Chinese ports and require an Entry Permit (EEP) for Hong Kong.
+
+#### 3. StarDream Cruises (Resorts World Cruises / StarCruises)
+* **Booking & Staterooms:** Fares in SGD; full payment required for all bookings. Single traveler supplement is **200%** of Twin-Sharing fare unless otherwise stated. Splitting staterooms is treated as a new booking at prevailing rates. Adding 3rd/4th guest is subject to berth limit availability at prevailing rates.
+* **Cancellation Policy (All Cruise Lengths):** 46+ days prior: 30% of full cabin fare | 45–30 days: 50% | 29–15 days: 70% | 14 days or less / No Show / No written notice: 100% of full package fare. **Peak Seasons (All Public Holidays):** 100% of full package fare regardless of notice period. Change of sailing date, downgrading cabin/itinerary, or changing vessel = cancellation. WTS imposes a **S$50/pax** handling fee for every cancellation.
+* **Amendment Policy:** **S$100.00/pax** administrative fee for partial name change or swap of passenger names (plus airline penalty if applicable). Changing all names in a stateroom = cancellation. Amendments received **7 calendar days or less** prior to departure incur 100% full cabin fare cancellation charge.
+* **Infant & Minor Policy:** Infants (below 2 years old) must be at least **6 months old** to sail and are charged an infant rate when sharing with 2 full-paying guests (some promotions exclude infant rates). Under 18 must be accompanied in the **same or connecting stateroom** by a passenger 18+.
+* **Pregnancy Policy:** Permitted only before **24th week** at time of sailing (with Fit to Travel note per StarDream policy).
+* **Check-In Documentation:** 6 months passport validity from expected date of return from last point of return. Foreigners working/studying in SG must present their **"Green Card"** (Work Permit, Employment Pass, or Student Pass) with passport. Singapore PRs must present **Re-Entry Permit** with passport. Foreigners requiring an SG visa must present valid SG multiple-entry visa + endorsed SG Social Visit Immigration card.
+
 ---
 
 ## 7. COACH PICKUP POINTS & GOOGLE MAPS LINKS
