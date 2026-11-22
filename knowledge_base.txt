@@ -520,8 +520,9 @@
   * No Casino Onboard: Disney Cruise Line does NOT have a casino.
 
 ### Pregnancy Policy by Cruise Line
-* Dream Cruises / Star Voyager / Star Navigator: Pregnant guests who are 24 weeks pregnant or more by the end of the cruise are strictly NOT permitted to board.
-* Royal Caribbean: Pregnant guests who will enter their 24th week of pregnancy (24 weeks pregnant or more) at any time during the cruise are strictly NOT permitted to board.
+* StarDream Cruises (Dream Cruises / Star Voyager / Star Navigator) & Royal Caribbean:
+  * Guests who have entered their **24th week of pregnancy** (or will enter the 24th week at any point during the cruise) will **NOT** be allowed to board the ship.
+  * **Mandatory Medical Certificate:** All pregnant guests sailing prior to the 24-week cutoff are required to present a **physician's Fit to Travel note** stating that they are in good health, not experiencing a high-risk pregnancy, and will not be entering their 24th week during the cruise duration.
 * Disney Cruise Line: Pregnant guests who have entered or will enter their 24th week of pregnancy (24 weeks pregnant or more) before or during the cruise are strictly NOT permitted to board.
 * *Summary for Agents*: Across all major cruise lines (Dream, Star, Royal Caribbean, Disney), 24 weeks pregnant and above cannot board.
 
@@ -530,6 +531,7 @@
 * Royal Caribbean: 55+ years old.
 
 ### Child & Infant Criteria on Cruises
+* **Minimum Sailing Age (StarDream & Royal Caribbean):** Minimum age to sail on StarDream Cruises and Royal Caribbean is **6 months old** as of the first day of the cruise.
 * Child and infant age definitions, cabin sharing policies, and fare categories vary by cruise liner.
 * Agents must always check directly inside the specific cruise reservation system for the exact age thresholds and pricing.
 
