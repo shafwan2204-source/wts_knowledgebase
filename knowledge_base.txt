@@ -329,6 +329,9 @@
 ---
 
 ## 5. COACH, ROUTE & SYSTEM CODES
+### Coach Boarding & Digital Invoice Policy
+* **Digital Copy Accepted:** Customers who forget to bring a physical printed copy of their invoice **can still board the coach using a digital copy** (such as a PDF file on their mobile device or directly from their booking confirmation email).
+* **Driver Passenger List Verification:** Coach drivers also have the passenger manifest list containing guests' names to verify passengers at boarding.
 
 ### System Bus Codes
 * Genting: `GOLD`
