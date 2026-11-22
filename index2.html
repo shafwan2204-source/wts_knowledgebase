@@ -700,7 +700,7 @@
       </div>
       <div class="status-badge emerald" id="engineBadge">
         <div class="status-dot"></div>
-        <span id="badgeText">3.8 Flash</span>
+        <span id="badgeText">3.5 Flash-Lite</span>
       </div>
       <button class="header-btn" type="button" id="searchToggleBtn" onclick="toggleSearch()" title="Search conversation (Ctrl+F)">🔍 Find</button>
       <button class="header-btn" type="button" id="fontSizeBtn" onclick="toggleFontSize()" title="Toggle text size (Compact / Comfortable)">Aa</button>
@@ -754,8 +754,8 @@
     const AVATAR_URL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS42Xy7NB3R0Xy0MnT5mvmh2ovidQ7lE-tJKl9RDZ8EEchaE3n66Z5b6w&s=10";
 
     const MODEL_CHAIN = [
-      { id: "gemini-3.8-flash", label: "3.8 Flash", thinkingLevel: "low" },
-      { id: "gemini-3.5-flash-lite", label: "3.5 Flash-Lite", thinkingLevel: "minimal" }
+      { id: "gemini-3.5-flash-lite", label: "3.5 Flash-Lite", thinkingLevel: "low" },
+      { id: "gemini-3.8-flash", label: "3.8 Flash", thinkingLevel: "low" }
       ];
     const MAX_HISTORY_TURNS = 10; // Sliding window: keep last 10 messages for prompt efficiency
 
